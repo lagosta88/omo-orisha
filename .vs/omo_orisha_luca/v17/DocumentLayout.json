@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DA667CC0-8CBB-73C0-15B2-EEB2329E63A9}|Assembly-CSharp.csproj|c:\\users\\cezim\\onedrive\\desktop\\projetos unity\\omo_orisha_luca\\assets\\ataque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA667CC0-8CBB-73C0-15B2-EEB2329E63A9}|Assembly-CSharp.csproj|solutionrelative:assets\\ataque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA667CC0-8CBB-73C0-15B2-EEB2329E63A9}|Assembly-CSharp.csproj|c:\\users\\cezim\\onedrive\\desktop\\projetos unity\\omo_orisha_luca\\assets\\uivida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA667CC0-8CBB-73C0-15B2-EEB2329E63A9}|Assembly-CSharp.csproj|solutionrelative:assets\\uivida.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA667CC0-8CBB-73C0-15B2-EEB2329E63A9}|Assembly-CSharp.csproj|C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\assets\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA667CC0-8CBB-73C0-15B2-EEB2329E63A9}|Assembly-CSharp.csproj|solutionrelative:assets\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DA667CC0-8CBB-73C0-15B2-EEB2329E63A9}|Assembly-CSharp.csproj|C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\assets\\playerc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DA667CC0-8CBB-73C0-15B2-EEB2329E63A9}|Assembly-CSharp.csproj|solutionrelative:assets\\playerc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ataque.cs",
+              "DocumentMoniker": "C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\Assets\\ataque.cs",
+              "RelativeDocumentMoniker": "Assets\\ataque.cs",
+              "ToolTip": "C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\Assets\\ataque.cs",
+              "RelativeToolTip": "Assets\\ataque.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAQwC8AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:47:07.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UIvida.cs",
+              "DocumentMoniker": "C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\Assets\\UIvida.cs",
+              "RelativeDocumentMoniker": "Assets\\UIvida.cs",
+              "ToolTip": "C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\Assets\\UIvida.cs",
+              "RelativeToolTip": "Assets\\UIvida.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:37:59.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\Assets\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\Assets\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\PlayerController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:37:05.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "playerC.cs",
+              "DocumentMoniker": "C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\Assets\\playerC.cs",
+              "RelativeDocumentMoniker": "Assets\\playerC.cs",
+              "ToolTip": "C:\\Users\\cezim\\OneDrive\\Desktop\\projetos unity\\omo_orisha_luca\\Assets\\playerC.cs",
+              "RelativeToolTip": "Assets\\playerC.cs",
+              "ViewState": "AQIAAD4AAAAAAAAAAAA9wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-17T22:36:57.855Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
