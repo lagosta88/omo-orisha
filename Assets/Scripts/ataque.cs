@@ -79,21 +79,21 @@ public class ataque : MonoBehaviour
                 //coloca a instancia posicao correta
                 instancia.transform.SetParent(transform, true);
 
-                instancia.transform.position = instancia.transform.position + new Vector3(hitbox_x, hitbox_y, hitbox_z);
+                instancia.transform.position = instancia.transform.position + new Vector3(hitbox_x * direcao.getDirecao(personagem), hitbox_y, hitbox_z);
 
 
-                
+
             }
         }
 
-        if(instanciaexiste == true)
+        if(instanciaexiste == true) //a hitbox acompanha o movimento do jogador
         {
-            instancia.transform.position = personagem.transform.position + new Vector3(hitbox_x, hitbox_y, hitbox_z);
+            instancia.transform.position = personagem.transform.position + new Vector3(hitbox_x * direcao.getDirecao(personagem), hitbox_y, hitbox_z);
 
         }
 
 
-        if ((timer >= hitbox_time_alive) && (instancia != null))
+        if ((timer >= hitbox_time_alive) && (instancia != null)) //destroi a hitbox após seu tempo terminar
         {
             Debug.Log("hitbox do ataque destruida (jogador)");
             instanciaexiste = false;

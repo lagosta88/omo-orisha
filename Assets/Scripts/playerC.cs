@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class playerC : MonoBehaviour
@@ -7,7 +8,7 @@ public class playerC : MonoBehaviour
 
     public UIvida Madd;
 
-    public GameObject alvoobject;
+    public GameObject alvoobjeto;
     SpriteRenderer meuspriteRenderer;
     Transform posicao;
     Rigidbody2D ridi;
@@ -19,6 +20,8 @@ public class playerC : MonoBehaviour
     private bool Wall;
     public float wallJumpForcaX = 150f;
     public float wallJumpForcaY = 250f;
+    private bool facingRight = true;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -28,20 +31,25 @@ public class playerC : MonoBehaviour
         ridi = GetComponent<Rigidbody2D>();
         velon = 10;
         twojump = 1;
-      //  posicao.localPosition = new Vector3(0,0,0);
-        
+        //  posicao.localPosition = new Vector3(0,0,0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (ChaoS)
-        twojump = 1;
+            twojump = 1;
         // zera os jumps sempre que toca o chao
 
-        if(Input.GetAxis("Horizontal") <=1){ 
-        move = Input.GetAxis("Horizontal");
-        Movimento(move);}
+        if (Input.GetAxis("Horizontal") <= 1)
+        {
+            move = Input.GetAxis("Horizontal");
+            Movimento(move);
+            facingRight = acharDirecao(move, facingRight);
+            alinharDirecao(facingRight);
+            
+        }
         // nesse movimento voce pode ajustar a velocidade da direção, menor para esquerda valores maiores menor para direita valores decimais
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -52,31 +60,34 @@ public class playerC : MonoBehaviour
             }
         }
 
-         if (Wall && !ChaoS && Input.GetKeyDown(KeyCode.Space))
+        if (Wall && !ChaoS && Input.GetKeyDown(KeyCode.Space))
         {
             wallJ();
         }
     }
 
-    
 
-    void pulou(){
+
+    void pulou()
+    {
         ridi.linearVelocity = new Vector2(ridi.linearVelocity.x, 0); // Reseta velocidade vertical para pulo consistente
         ridi.AddForce(new Vector2(0, puloForca));
         twojump--;
         ChaoS = false;
     }
 
-    void wallJ(){
-         float direcao = move > 0 ? -1 : 1; // Pula para o lado oposto da parede
+    void wallJ()
+    {
+        float direcao = move > 0 ? -1 : 1; // Pula para o lado oposto da parede
         ridi.linearVelocity = Vector2.zero; // Reseta velocidade
         ridi.AddForce(new Vector2(direcao * wallJumpForcaX, wallJumpForcaY));
         Wall = false;
-    }   
+    }
 
 
-    void Movimento(float move){
-        ridi.linearVelocity = new Vector2( move * velon, ridi.linearVelocity.y);
+    void Movimento(float move)
+    {
+        ridi.linearVelocity = new Vector2(move * velon, ridi.linearVelocity.y);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -84,21 +95,21 @@ public class playerC : MonoBehaviour
         if (collision.collider.CompareTag("Chao")) // Quando colidir com chao a variavel fica true
             ChaoS = true;
 
-        
-        
+
+
         if (collision.collider.CompareTag("Inimigo")) // Quando colidir com inimigo perde 10 de vida
             Madd.Dano(10);
 
-        
+
 
         if (collision.collider.CompareTag("Cura")) // Quando colidir com cura ganha 10 de vida
             Madd.Cura(10);
 
-        
+
 
         if (collision.collider.CompareTag("parede")) // Quando colidir com parede a variavel fica true
             Wall = true;
-            
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -112,8 +123,35 @@ public class playerC : MonoBehaviour
         {
             Wall = false;
         }
-
     }
+    bool acharDirecao(float move, bool facingRight) { //define o lado que o personagem deve estar apontando//define o lado que o personagem deve estar apontando
+
+        if(move > 0) { facingRight = true; }
+        if(move < 0) { facingRight = false; }
+        Debug.Log("facingRight = " + facingRight);
+        return facingRight;
+    }
+    
+    void alinharDirecao(bool facingRight)
+    {
+     
+
+        if ((facingRight && transform.localScale.x < 0) || (!facingRight && transform.localScale.x > 0)) {
+
+            Vector3 mudarDirecao = transform.localScale;
+            mudarDirecao.x *= -1;
+            transform.localScale = mudarDirecao;
+
+}
+    }
+
+    public int getDirecao()
+    {
+
+        if (facingRight) { return 1; } else { return -1; }
+        
+    }
+
 
 }
 
