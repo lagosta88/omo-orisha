@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 376436567}
   - component: {fileID: 376436566}
   m_Layer: 0
-  m_Name: Static Sprite (1)
+  m_Name: parede2
   m_TagString: parede
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 1005339349}
   - component: {fileID: 1005339356}
   m_Layer: 0
-  m_Name: Dynamic Sprite
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -957,7 +957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Madd: {fileID: 382709596}
-  alvoobject: {fileID: 0}
+  alvoobjeto: {fileID: 0}
   puloForca: 200
   velon: 0
   wallJumpForcaX: 150
@@ -1069,7 +1069,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 8902931529456644097, guid: 222b0cc079c51ae4a9c61cb66d7f2c07, type: 3}
   m_Color: {r: 0, g: 0.059121132, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   personagem: {fileID: 1005339348}
   cooldown: 1
   hitbox_time_alive: 0.5
-  hitbox_x: 0
+  hitbox_x: 1
   hitbox_y: 0
   hitbox_z: 0
 --- !u!1 &1027363283
@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 1027363285}
   - component: {fileID: 1027363284}
   m_Layer: 0
-  m_Name: Static Sprite
+  m_Name: parede1
   m_TagString: parede
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1289,7 +1289,7 @@ GameObject:
   - component: {fileID: 1157054533}
   - component: {fileID: 1157054532}
   m_Layer: 0
-  m_Name: Static Sprite (4)
+  m_Name: hitbox
   m_TagString: hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1424,7 +1424,7 @@ GameObject:
   - component: {fileID: 1500751956}
   - component: {fileID: 1500751955}
   m_Layer: 0
-  m_Name: Static Sprite (2)
+  m_Name: inimigo
   m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1586,7 +1586,7 @@ GameObject:
   - component: {fileID: 1630046893}
   - component: {fileID: 1630046892}
   m_Layer: 0
-  m_Name: Static Sprite (3)
+  m_Name: cura
   m_TagString: Cura
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
