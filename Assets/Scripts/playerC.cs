@@ -48,6 +48,7 @@ public class playerC : MonoBehaviour
             Movimento(move);
 
             //define a direcao que o jogador esta apontando baseado no movimento dele (necessario para definir a direcao do sprite, ataques e habilidades
+
             facingRight = acharDirecao(move, facingRight);
             alinharDirecao(facingRight);
             
