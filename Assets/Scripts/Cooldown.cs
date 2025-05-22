@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Cooldown
 {
-    bool cooldownOver = true; 
+    public bool cooldownOver = true; 
     float timer = 0f; //conta o tempo quando o cooldown estiver ativo
     float duration; 
     public Cooldown(float duration) { 
