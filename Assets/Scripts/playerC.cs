@@ -21,7 +21,6 @@ public class playerC : MonoBehaviour
     public float wallJumpForcaX = 150f;
     public float wallJumpForcaY = 250f;
     private bool facingRight = true;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +66,10 @@ public class playerC : MonoBehaviour
         {
             wallJ();
         }
+
+        //teste
+        ativarHabilidade();
+
     }
 
 
@@ -127,7 +130,7 @@ public class playerC : MonoBehaviour
             Wall = false;
         }
     }
-    bool acharDirecao(float move, bool facingRight) { //define o lado que o personagem deve estar apontando//define o lado que o personagem deve estar apontando
+    bool acharDirecao(float move, bool facingRight) { //define o lado que o personagem deve estar apontando
 
         if(move > 0) { facingRight = true; }
         if(move < 0) { facingRight = false; }
@@ -155,6 +158,18 @@ public class playerC : MonoBehaviour
         
     }
 
+    //placeholder para testar habilidades
+    public Habilidade habilidadeAtual;
+    void ativarHabilidade()
+    {
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            //botar o Ativar da habilidade atual aqui
+            habilidadeAtual.Ativar();
+            Debug.Log("ativarHabilidade ligado!");
+        }
+
+    }
 }
 

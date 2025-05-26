@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Habilidade //essa classe servira de base para todas as outras habilidades
+public abstract class Habilidade : MonoBehaviour //essa classe servira de base para todas as outras habilidades
 {
 
     public int nivel = 0;

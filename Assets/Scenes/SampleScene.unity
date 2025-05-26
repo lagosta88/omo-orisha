@@ -937,6 +937,7 @@ GameObject:
   - component: {fileID: 1005339352}
   - component: {fileID: 1005339349}
   - component: {fileID: 1005339356}
+  - component: {fileID: 1005339357}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -962,6 +963,7 @@ MonoBehaviour:
   velon: 0
   wallJumpForcaX: 150
   wallJumpForcaY: 250
+  habilidadeAtual: {fileID: 1005339357}
 --- !u!50 &1005339352
 Rigidbody2D:
   serializedVersion: 5
@@ -1115,6 +1117,23 @@ MonoBehaviour:
   hitbox_x: 1
   hitbox_y: 0
   hitbox_z: 0
+--- !u!114 &1005339357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005339348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d20049822ab144782f8796df2be6e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nivel: 0
+  tempoCooldown: 0
+  rigidBody: {fileID: 1005339352}
+  playerC: {fileID: 1005339349}
+  velocidade: 100
 --- !u!1 &1027363283
 GameObject:
   m_ObjectHideFlags: 0
