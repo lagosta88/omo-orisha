@@ -11,7 +11,7 @@ public class playerC : MonoBehaviour
     public GameObject alvoobjeto;
     SpriteRenderer meuspriteRenderer;
     Transform posicao;
-    Rigidbody2D ridi;
+    public Rigidbody2D ridi;
     private float move;
     public float puloForca = 300f;
     public float velon;
@@ -68,8 +68,10 @@ public class playerC : MonoBehaviour
         }
 
         //teste
-        ativarHabilidade();
-
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ativarHabilidade();
+        }
     }
 
 
@@ -134,7 +136,7 @@ public class playerC : MonoBehaviour
 
         if(move > 0) { facingRight = true; }
         if(move < 0) { facingRight = false; }
-        Debug.Log("facingRight = " + facingRight);
+        //Debug.Log("facingRight = " + facingRight); mensagem de debug para teste
         return facingRight;
     }
     
@@ -162,13 +164,10 @@ public class playerC : MonoBehaviour
     public Habilidade habilidadeAtual;
     void ativarHabilidade()
     {
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
             //botar o Ativar da habilidade atual aqui
             habilidadeAtual.Ativar();
-            Debug.Log("ativarHabilidade ligado!");
-        }
+            //Debug.Log("ativarHabilidade ligado!");
+    
 
     }
 }

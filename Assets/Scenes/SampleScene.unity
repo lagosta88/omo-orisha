@@ -959,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Madd: {fileID: 382709596}
   alvoobjeto: {fileID: 0}
+  ridi: {fileID: 0}
   puloForca: 200
   velon: 0
   wallJumpForcaX: 150
@@ -1133,7 +1134,8 @@ MonoBehaviour:
   tempoCooldown: 0
   rigidBody: {fileID: 1005339352}
   playerC: {fileID: 1005339349}
-  velocidade: 100
+  velocidade: 60
+  totalDeFrames: 60
 --- !u!1 &1027363283
 GameObject:
   m_ObjectHideFlags: 0
