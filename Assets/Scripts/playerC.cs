@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerC : MonoBehaviour
 {
-
+    public PlayerCombo atk;
     public UIvida Madd;
 
     public GameObject alvoobjeto;
@@ -22,6 +23,7 @@ public class playerC : MonoBehaviour
     public float wallJumpForcaY = 250f;
     private bool facingRight = true;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class playerC : MonoBehaviour
         ridi = GetComponent<Rigidbody2D>();
         velon = 10;
         twojump = 1;
+        atk.player = true;
         //  posicao.localPosition = new Vector3(0,0,0);
 
     }
@@ -37,6 +40,7 @@ public class playerC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SistemaDeAtaque(); //Deixa esse processo separado para fins de organização
         if (ChaoS)
             twojump = 1;
         // zera os jumps sempre que toca o chao
@@ -50,7 +54,7 @@ public class playerC : MonoBehaviour
 
             facingRight = acharDirecao(move, facingRight);
             alinharDirecao(facingRight);
-            
+
         }
         // nesse movimento voce pode ajustar a velocidade da direção, menor para esquerda valores maiores menor para direita valores decimais
 
@@ -74,7 +78,62 @@ public class playerC : MonoBehaviour
         }
     }
 
+    void SistemaDeAtaque()
+    {
+        //Reseta o tempo de combo
+        if (Time.time - atk.momentoUltimoAtaque > atk.janelaDeCombo && atk.comboAtual > 0)
+        {
+            atk.comboAtual = 0;
+            atk.comboDisponivel = true;
+        }
 
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (atk.comboDisponivel && Time.time - atk.momentoUltimoAtaque <= atk.janelaDeCombo)
+            {
+                //Segue o combo
+                ExecuteCombo(atk.comboAtual);
+                atk.comboAtual = (atk.comboAtual + 1) % atk.nomesTrigger.Count; //Isso torna o combo cíclio, após a última etapa volta à primeira
+            }
+            else if (Time.time - atk.momentoUltimoAtaque > atk.janelaDeCombo)
+            {
+                //Novo combo
+                atk.comboAtual = 0;
+                ExecuteCombo(atk.comboAtual);
+                atk.comboAtual++;
+            }
+            atk.momentoUltimoAtaque = Time.time;
+        }
+    }
+
+    void ExecuteCombo(int etapa)
+    {
+        if (etapa >= atk.nomesTrigger.Count)
+        {
+            Debug.LogError("ETAPA DE COMBO FORA DOS DOMÍNIOS");
+            return;
+        }
+        atk.comboDisponivel = false;
+        print("Executou o ataque " + etapa);
+        atk.VerificarAtk(0); //O parâmetro é o dano do ataque. Está em 0 pq não há inimigos com vida ainda
+
+
+        //A LINHA DE CÓDIGO ABAIXO DEVE SER REMOVIDA QUANDO AS ANIMAÇÕES DO PLAYER FOREM IMPLEMENTADAS!!!!
+        Invoke(nameof(PermitirProxCombo), 0.4f);
+        //A LINHA DE CÓDIGO ACIMA DEVE SER REMOVIDA QUANDO AS ANIMAÇÕES DO PLAYER FOREM IMPLEMENTADAS!!!!
+
+
+        //CHAMADA DAS ANIMAÇÕES (MUITO IMPORTANTE E NECESSÁRIO - PENDENTE)
+        //Modelo de chamada:
+        //animator.SetTrigger(atk.nomesTrigger[etapa]);
+    }
+
+    // Método chamado por Animation Event
+    // Assim que implementarmos as animações, ao passar pelo frame específico de fim de atk esse método será chamado
+    public void PermitirProxCombo()
+    {
+        atk.comboDisponivel = true;
+    }
 
     void pulou()
     {
@@ -132,32 +191,34 @@ public class playerC : MonoBehaviour
             Wall = false;
         }
     }
-    bool acharDirecao(float move, bool facingRight) { //define o lado que o personagem deve estar apontando
+    bool acharDirecao(float move, bool facingRight)
+    { //define o lado que o personagem deve estar apontando
 
-        if(move > 0) { facingRight = true; }
-        if(move < 0) { facingRight = false; }
-        //Debug.Log("facingRight = " + facingRight); mensagem de debug para teste
+        if (move > 0) { facingRight = true; }
+        if (move < 0) { facingRight = false; }
+        //Debug.Log("facingRight = " + facingRight);
         return facingRight;
     }
-    
+
     void alinharDirecao(bool facingRight)
     {
-     
 
-        if ((facingRight && transform.localScale.x < 0) || (!facingRight && transform.localScale.x > 0)) {
+
+        if ((facingRight && transform.localScale.x < 0) || (!facingRight && transform.localScale.x > 0))
+        {
 
             Vector3 mudarDirecao = transform.localScale;
             mudarDirecao.x *= -1;
             transform.localScale = mudarDirecao;
 
-}
+        }
     }
 
     public int getDirecao()
     {
 
         if (facingRight) { return 1; } else { return -1; }
-        
+
     }
 
     //placeholder para testar habilidades
@@ -167,8 +228,11 @@ public class playerC : MonoBehaviour
             //botar o Ativar da habilidade atual aqui
             habilidadeAtual.Ativar();
             //Debug.Log("ativarHabilidade ligado!");
-    
+    }
 
+    void OnDrawGizmos()
+    {
+        if (atk.visualizar) atk.MostrarCaixa(atk.qualDebug);
     }
 }
 
