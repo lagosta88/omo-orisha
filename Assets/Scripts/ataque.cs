@@ -45,7 +45,7 @@ public class ataque : MonoBehaviour
     {
 
 
-        //posso tornar isso uma função própria depois
+        //posso tornar isso uma funï¿½ï¿½o prï¿½pria depois
         //timer pra checar o cooldown
         if (timer < cooldown)
         {
@@ -74,7 +74,7 @@ public class ataque : MonoBehaviour
                 //cria a instancia da hitbox
                 instancia = Instantiate(hitbox, transform.position, transform.rotation);
 
-                Debug.Log("hitbox do ataque criada (jogador)");
+                //Debug.Log("hitbox do ataque criada (jogador)");
 
                 //coloca a instancia posicao correta
                 instancia.transform.SetParent(transform, true);
@@ -93,9 +93,9 @@ public class ataque : MonoBehaviour
         }
 
 
-        if ((timer >= hitbox_time_alive) && (instancia != null)) //destroi a hitbox após seu tempo terminar
+        if ((timer >= hitbox_time_alive) && (instancia != null)) //destroi a hitbox apï¿½s seu tempo terminar
         {
-            Debug.Log("hitbox do ataque destruida (jogador)");
+            //Debug.Log("hitbox do ataque destruida (jogador)");
             instanciaexiste = false;
             Destroy(instancia);
 
