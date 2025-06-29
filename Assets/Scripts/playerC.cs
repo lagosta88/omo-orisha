@@ -83,11 +83,12 @@ public class playerC : MonoBehaviour
             atk.comboDisponivel = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && atk.ataqueHabilitado)
         {
             if (atk.comboDisponivel && Time.time - atk.momentoUltimoAtaque <= atk.janelaDeCombo)
             {
                 //Segue o combo
+                atk.atacando = true;
                 ExecuteCombo(atk.comboAtual);
                 atk.comboAtual = (atk.comboAtual + 1) % atk.nomesTrigger.Count; //Isso torna o combo cíclio, após a última etapa volta à primeira
             }
@@ -95,6 +96,7 @@ public class playerC : MonoBehaviour
             {
                 //Novo combo
                 atk.comboAtual = 0;
+                atk.atacando = true;
                 ExecuteCombo(atk.comboAtual);
                 atk.comboAtual++;
             }
@@ -129,6 +131,7 @@ public class playerC : MonoBehaviour
     public void PermitirProxCombo()
     {
         atk.comboDisponivel = true;
+        atk.atacando = false;
     }
 
     void pulou()

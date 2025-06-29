@@ -16,6 +16,8 @@ public class AtkHitBox //Não pode derivar do MonoBehaviour
     private int MaxCombo => centrosDeAtaque.Count - 1;
     //Sempre que MaxCombo é acessado ele se torna o último índice da lista. Evita acesso indevido às listas
     public bool player = false;
+    public bool atacando = false;
+    public bool ataqueHabilitado = true;
 
     [Header("Debug Visual")]
     [Space(5)]
@@ -25,7 +27,8 @@ public class AtkHitBox //Não pode derivar do MonoBehaviour
     {
         MostrarCaixa(comboAtual);
         if (comboAtual > MaxCombo + 1) comboAtual = MaxCombo + 1;
-        var hit = Physics2D.OverlapBoxAll((Vector2)centrosDeAtaque[comboAtual].position,
+        var hit = Physics2D.OverlapBoxAll(
+            (Vector2)centrosDeAtaque[comboAtual].position,
             tamanhoDoAtaque[comboAtual],
             0f,
             layerDoAlvo
@@ -57,8 +60,8 @@ public class AtkHitBox //Não pode derivar do MonoBehaviour
         Vector2 esqBaixo = origem + new Vector2(-metade.x, -metade.y);
 
         Debug.DrawLine(esqCima, dirCima, Color.red);     // Topo
-        Debug.DrawLine(dirCima, dirBaixo, Color.red); // Direita
-        Debug.DrawLine(dirBaixo, esqBaixo, Color.red); // Base
-        Debug.DrawLine(esqBaixo, esqCima, Color.red);   // Esquerda
+        Debug.DrawLine(dirCima, dirBaixo, Color.red);    // Direita
+        Debug.DrawLine(dirBaixo, esqBaixo, Color.red);   // Base
+        Debug.DrawLine(esqBaixo, esqCima, Color.red);    // Esquerda
     }
 }
