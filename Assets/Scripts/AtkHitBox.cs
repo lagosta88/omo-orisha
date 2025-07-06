@@ -30,7 +30,7 @@ public class AtkHitBox //Não pode derivar do MonoBehaviour
             0f,
             layerDoAlvo
         );
-
+ 
         foreach (var item in hit)
         {
             Debug.Log($"Atingiu o objeto de nome {item.gameObject.name}");
