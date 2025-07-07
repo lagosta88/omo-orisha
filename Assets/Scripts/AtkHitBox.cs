@@ -35,12 +35,16 @@ public class AtkHitBox //Não pode derivar do MonoBehaviour
         {
             Debug.Log($"Atingiu o objeto de nome {item.gameObject.name}");
             // Chamar aqui algo como:
-            /*
+
             if (player)
-                item.gameObject.GetComponent<Inimigo>().ReceberDano(danoCausado);
+                item.gameObject.GetComponent<movimento_inimigo>().Slider.Dano((int)danoCausado);
             else
-                item.gameObject.GetComponent<playerC>().ReceberDano(danoCausado);
-            */
+            {
+                
+                item.gameObject.GetComponent<playerC>().Madd.Dano((int)danoCausado);
+
+            }
+            
         }
     }
 
