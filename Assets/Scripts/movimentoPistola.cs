@@ -14,40 +14,67 @@ public class movimentopistola : InimigoGeral
     public float tempoEntreAtaques;
     public GameObject projetilPrefab;
     public Vector3 deslocamentoSpawnProjetil;
+    public Animator animator;
+    public GameObject ExplosaoMorte;
+    public Vector3 deslocamentoExplosao;
+    private int vidaFrameAnterior;
+    private SpriteRenderer spriteRenderer;
+    
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine("AtkLoop");
+        
     }
 
     IEnumerator AtkLoop()
     {
         while (Slider.vidaatual > 0)
         {
-
-            GameObject projetil = Instantiate(projetilPrefab, transform.position + deslocamentoSpawnProjetil, Quaternion.identity);
-            projetil.GetComponent<ProjetilPistola>().alvo = target.gameObject;
+            animator.SetTrigger("Atacando");
             
-            hitbox.VerificarAtk(10);
             yield return new WaitForSeconds(tempoEntreAtaques);
 
         }
     }
+
+
+    void DispararPistola() //chamado pela animacao de atacar
+    {
+        GameObject projetil = Instantiate(projetilPrefab, transform.position + deslocamentoSpawnProjetil, Quaternion.identity);
+        projetil.GetComponent<ProjetilPistola>().alvo = target.gameObject;
+
+        //hitbox.VerificarAtk(10);
+    }
     void FixedUpdate()
     {
-
-
         
+
+
 
         if (Slider.vidaatual <= 0)
         {
-
+            Instantiate(ExplosaoMorte, transform.position + deslocamentoExplosao, Quaternion.identity);
             Destroy(gameObject);
 
         }
-
-
+       
+        
+        //checar se recebeu dano
+        if(Slider.vidaatual != vidaFrameAnterior)
+        {
+            spriteRenderer.color = Color.red;
+            //animator.SetTrigger("Danificado");
+        }else
+        {
+            spriteRenderer.color = Color.white;
+        }
+        vidaFrameAnterior = Slider.vidaatual;
+        
         if (target == null) return;
 
         // Move apenas no eixo X
@@ -93,6 +120,8 @@ public class movimentopistola : InimigoGeral
         if (collision.collider.CompareTag("Chao"))
         {
             ChaoS = true;
+            animator.SetTrigger("NoChao");
+            Debug.Log("no chao!");
         }
     }
 
@@ -102,10 +131,13 @@ public class movimentopistola : InimigoGeral
         if (collision.collider.CompareTag("Chao"))
         {
             ChaoS = false;
+            animator.SetTrigger("Pulou");
         }
     }
     void OnDrawGizmos()
     {
         if (hitbox.visualizar) hitbox.MostrarCaixa(hitbox.qualDebug);
     }
+
+
 }

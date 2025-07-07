@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PistolaDanificado
+  m_Name: BombaAtacando
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 3332578323301915817, guid: 72f01c0fdfe11f74da78db2c92c3d1b2, type: 3}
+      value: {fileID: 725725782557603957, guid: 6081c25c4dc47fa4d9a8ca4f77ac819f, type: 3}
+    - time: 0.125
+      value: {fileID: 7117617399195371834, guid: a877028181ffbd443afc9c4f57a00816, type: 3}
+    - time: 0.25
+      value: {fileID: -7121833542385060770, guid: 84087b40e65606343b77957f5d79b385, type: 3}
+    - time: 0.375
+      value: {fileID: -4793101176341802400, guid: 032802297d551ee428ecd55cfb147e76, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 4
+  m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -44,13 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 3332578323301915817, guid: 72f01c0fdfe11f74da78db2c92c3d1b2, type: 3}
+    - {fileID: 725725782557603957, guid: 6081c25c4dc47fa4d9a8ca4f77ac819f, type: 3}
+    - {fileID: 7117617399195371834, guid: a877028181ffbd443afc9c4f57a00816, type: 3}
+    - {fileID: -7121833542385060770, guid: 84087b40e65606343b77957f5d79b385, type: 3}
+    - {fileID: -4793101176341802400, guid: 032802297d551ee428ecd55cfb147e76, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.25
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -69,4 +78,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.375
+    functionName: DispararBomba
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

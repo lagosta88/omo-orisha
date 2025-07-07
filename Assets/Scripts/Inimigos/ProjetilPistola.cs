@@ -29,13 +29,13 @@ public class ProjetilPistola : ProjetilEnemy
 
         rigidBody.linearVelocity = direcao * velocidade;
 
-        ApontarParaTrajetoria(rigidBody);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ApontarParaTrajetoria(rigidBody);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
