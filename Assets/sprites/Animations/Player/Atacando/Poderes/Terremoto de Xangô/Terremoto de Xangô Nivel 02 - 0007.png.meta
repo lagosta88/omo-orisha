@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "Terremoto de Xang\xF4 Nivel 02 - 0007_0": 7573902242463882196
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

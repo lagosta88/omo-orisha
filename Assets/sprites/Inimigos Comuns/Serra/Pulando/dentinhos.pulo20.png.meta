@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dentinhos.pulo20_0: -6073670422452641690
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dentinhos.ataque10_0: 4377781023501084878
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

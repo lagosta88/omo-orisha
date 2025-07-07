@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bomba.dano_0: -5994446644643701180
+      bomba.dano_1: 8184283665331075534
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

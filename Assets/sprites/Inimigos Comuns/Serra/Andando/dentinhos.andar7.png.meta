@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dentinhos.andar7_0: 6125556031609796533
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
