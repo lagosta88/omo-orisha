@@ -33,17 +33,25 @@ public class AtkHitBox //Não pode derivar do MonoBehaviour
             0f,
             layerDoAlvo
         );
-
+ 
         foreach (var item in hit)
         {
             Debug.Log($"Atingiu o objeto de nome {item.gameObject.name}");
             // Chamar aqui algo como:
-            /*
+
             if (player)
-                item.gameObject.GetComponent<Inimigo>().ReceberDano(danoCausado);
+            {
+                if (item.gameObject.TryGetComponent<InimigoGeral>( out InimigoGeral componente)){
+                    componente.Slider.Dano((int)danoCausado);
+                }
+            }
             else
-                item.gameObject.GetComponent<playerC>().ReceberDano(danoCausado);
-            */
+            {
+
+                item.gameObject.GetComponent<playerC>().Madd.Dano((int)danoCausado);
+
+            }
+            
         }
     }
 

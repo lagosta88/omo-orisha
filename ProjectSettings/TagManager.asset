@@ -9,6 +9,8 @@ TagManager:
   - Cura
   - parede
   - hitbox
+  - ProjetilAliado
+  - ProjetilEnemy
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - Inimigo
   - Water
   - UI
-  - 
-  - 
-  - 
+  - player
+  - Jogador
+  - Projetil
   - 
   - 
   - 

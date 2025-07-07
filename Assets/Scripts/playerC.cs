@@ -12,16 +12,25 @@ public class playerC : MonoBehaviour
     public GameObject alvoobjeto;
     SpriteRenderer meuspriteRenderer;
     Transform posicao;
-    Rigidbody2D ridi;
+    Animator animator;
+    public Rigidbody2D ridi;
     private float move;
     public float puloForca = 300f;
     public float velon;
     private int twojump;
-    private bool ChaoS;
+    public bool ChaoS; 
     private bool Wall;
     public float wallJumpForcaX = 150f;
     public float wallJumpForcaY = 250f;
     private bool facingRight = true;
+    public TamborDeHabilidades tambor;
+    public Habilidade habilidadeAtual;
+    public Collider2D colliderChao;
+    public bool tocouOChao;
+    public Habilidade UltimaHabilidadeUtilizada = null;
+    public float atritoHabilidade; //desaceleracao sofrida pelo player ao usar uma habilidades
+    public bool emAtaque = false;
+
 
 
     // Start is called before the first frame update
@@ -30,48 +39,142 @@ public class playerC : MonoBehaviour
         meuspriteRenderer = GetComponent<SpriteRenderer>();
         posicao = GetComponent<Transform>();
         ridi = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
         velon = 10;
         twojump = 1;
         atk.player = true;
         //  posicao.localPosition = new Vector3(0,0,0);
+
+        UIvida.OnMorte += Morreu; //quando a vida do jogador chegar a zero (controlado por UIvida), chamar a funcao Morreu()
+        UIvida.OnReceberDano += LevouDano;
+
+      
 
     }
     
     // Update is called once per frame
     void Update()
     {
-        SistemaDeAtaque(); //Deixa esse processo separado para fins de organização
+
+
+
+        //teste para arrumar deteccao com o chao
+        if (ridi.linearVelocityY < -1 && tocouOChao == false)
+        {
+            //Debug.Log("Velocidade < 1, ChaoS = false");
+            ChaoS = false;
+        }
+        
+
+
+        //colisoes
+        if (PodeAtravessarInimigos())
+        {
+            //Debug.Log("colisao ignorada!");
+            Physics2D.IgnoreLayerCollision(3, 6, true); //ignora a colisao entre o jogador e inimigos
+        }
+        else
+        {
+            Physics2D.IgnoreLayerCollision(3, 6, false);
+        }
+
+        //SISTEMA DE ATAQUE
+            SistemaDeAtaque(); //Deixa esse processo separado para fins de organização
+
+        //PULO - LOGICA
         if (ChaoS)
             twojump = 1;
         // zera os jumps sempre que toca o chao
 
+        //ANDAR
         if (Input.GetAxis("Horizontal") <= 1)
         {
-            move = Input.GetAxis("Horizontal");
+            if (!EstaUsandoHabilidade())
+            {
+
+                move = Input.GetAxis("Horizontal");
+
+
+                //define a direcao que o jogador esta apontando baseado no movimento dele (necessario para definir a direcao do sprite, ataques e habilidades
+
+                facingRight = acharDirecao(move, facingRight);
+                alinharDirecao(facingRight);
+            }
+            else
+            {
+                if (ChaoS)
+                {
+                    move += -move * atritoHabilidade * Time.deltaTime; //sofre uma desaceleracao ao usar uma habilidade
+                }
+            }
             Movimento(move);
-
-            //define a direcao que o jogador esta apontando baseado no movimento dele (necessario para definir a direcao do sprite, ataques e habilidades
-
-            facingRight = acharDirecao(move, facingRight);
-            alinharDirecao(facingRight);
-
         }
         // nesse movimento voce pode ajustar a velocidade da direção, menor para esquerda valores maiores menor para direita valores decimais
 
+       
+
+        //PULAR
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (ChaoS || twojump > 0)
+            if ((ChaoS || twojump > 0) && !EstaUsandoHabilidade())
             {
                 pulou();
             }
         }
 
+        //AGARRAR NA PAREDE E WALLJUMP
+
+
+        if (Wall && !ChaoS)
+        {
+            animator.SetTrigger("AgarrarParede");
+        }
+
         if (Wall && !ChaoS && Input.GetKeyDown(KeyCode.Space))
         {
             wallJ();
+            animator.SetTrigger("pulou");
+        }
+
+        //HABILIDADES
+
+        //Ativar habilidade
+
+        
+        if (Input.GetMouseButtonDown(1))
+        {
+            habilidadeAtual = tambor.roda[tambor.numRodaAtual];
+            if (!EstaUsandoHabilidade() && !EstaAtacando() && HabilidadeDisponivel()) { 
+
+            ativarHabilidade();
+            }
         }
 
 
+        //trocar habilidade
+        
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                tambor.RodarParaEsquerda();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                tambor.RodarParaDireita();
+            }
+
+        //variaveis do animator
+
+        animator.SetFloat("ModuloMovement", Mathf.Abs(move));
+
+        animator.SetBool("EstaNoChao", ChaoS);
+
+        animator.SetFloat("VelocidadeY", ridi.linearVelocityY);
+
+        animator.SetBool("Wall", Wall);
+
+        tocouOChao = false;
     }
 
     void SistemaDeAtaque()
@@ -85,14 +188,18 @@ public class playerC : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && atk.ataqueHabilitado)
         {
-            if (atk.comboDisponivel && Time.time - atk.momentoUltimoAtaque <= atk.janelaDeCombo)
+            if (atk.comboDisponivel && Time.time - atk.momentoUltimoAtaque <= atk.janelaDeCombo && !EstaUsandoHabilidade())
             {
+<<<<<<< HEAD
                 //Segue o combo
                 atk.atacando = true;
+=======
+                //Segue o combos
+>>>>>>> origin/merge-lucca-cezi
                 ExecuteCombo(atk.comboAtual);
                 atk.comboAtual = (atk.comboAtual + 1) % atk.nomesTrigger.Count; //Isso torna o combo cíclio, após a última etapa volta à primeira
             }
-            else if (Time.time - atk.momentoUltimoAtaque > atk.janelaDeCombo)
+            else if (Time.time - atk.momentoUltimoAtaque > atk.janelaDeCombo && !EstaUsandoHabilidade())
             {
                 //Novo combo
                 atk.comboAtual = 0;
@@ -113,17 +220,11 @@ public class playerC : MonoBehaviour
         }
         atk.comboDisponivel = false;
         print("Executou o ataque " + etapa);
-        atk.VerificarAtk(0); //O parâmetro é o dano do ataque. Está em 0 pq não há inimigos com vida ainda
+        atk.VerificarAtk(10); //O parâmetro é o dano do ataque. Está em 0 pq não há inimigos com vida ainda
 
-
-        //A LINHA DE CÓDIGO ABAIXO DEVE SER REMOVIDA QUANDO AS ANIMAÇÕES DO PLAYER FOREM IMPLEMENTADAS!!!!
-        Invoke(nameof(PermitirProxCombo), 0.4f);
-        //A LINHA DE CÓDIGO ACIMA DEVE SER REMOVIDA QUANDO AS ANIMAÇÕES DO PLAYER FOREM IMPLEMENTADAS!!!!
-
-
-        //CHAMADA DAS ANIMAÇÕES (MUITO IMPORTANTE E NECESSÁRIO - PENDENTE)
-        //Modelo de chamada:
-        //animator.SetTrigger(atk.nomesTrigger[etapa]);
+        //CHAMADA DAS ANIMAÇÕES
+        animator.SetTrigger(atk.nomesTrigger[etapa]);
+        
     }
 
     // Método chamado por Animation Event
@@ -136,6 +237,7 @@ public class playerC : MonoBehaviour
 
     void pulou()
     {
+        animator.SetTrigger("pulou");
         ridi.linearVelocity = new Vector2(ridi.linearVelocity.x, 0); // Reseta velocidade vertical para pulo consistente
         ridi.AddForce(new Vector2(0, puloForca));
         twojump--;
@@ -156,26 +258,59 @@ public class playerC : MonoBehaviour
         ridi.linearVelocity = new Vector2(move * velon, ridi.linearVelocity.y);
     }
 
+    public void EmContatoComInimigo()
+    {
+            if (!EstaInvulneravel())
+            {
+                Madd.Dano(10);
+            }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Chao")) // Quando colidir com chao a variavel fica true
+        if (collision.collider.CompareTag("Chao"))
+        { // Quando colidir com chao a variavel fica true
             ChaoS = true;
+            tocouOChao = true;
+        }
+        
 
+        //if (collision.collider.CompareTag("Inimigo")) // Quando colidir com inimigo perde 10 de vida
+        //    Madd.Dano(10);
 
+            //DesbugarPulo();
+        
 
-        if (collision.collider.CompareTag("Inimigo")) // Quando colidir com inimigo perde 10 de vida
-            Madd.Dano(10);
-
-
-
-        if (collision.collider.CompareTag("Cura")) // Quando colidir com cura ganha 10 de vida
+        if (collision.collider.CompareTag("Cura"))
+        {
+            // Quando colidir com cura ganha 10 de vida
             Madd.Cura(10);
 
+            //DesbugarPulo();
 
+        }
 
-        if (collision.collider.CompareTag("parede")) // Quando colidir com parede a variavel fica true
+        if (collision.collider.CompareTag("parede"))
+        {// Quando colidir com parede a variavel fica true
             Wall = true;
+            //DesbugarPulo();
+        }
 
+
+
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+         if (collision.collider.CompareTag("Chao")) // Quando colidir com chao a variavel fica true
+              
+            tocouOChao = true;
+
+        if (collision.collider.CompareTag("parede"))
+        {// Quando colidir com parede a variavel fica true
+            Wall = true;
+            ;
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -191,7 +326,7 @@ public class playerC : MonoBehaviour
         }
     }
     bool acharDirecao(float move, bool facingRight)
-    { //define o lado que o personagem deve estar apontando//define o lado que o personagem deve estar apontando
+    { //define o lado que o personagem deve estar apontando
 
         if (move > 0) { facingRight = true; }
         if (move < 0) { facingRight = false; }
@@ -220,9 +355,138 @@ public class playerC : MonoBehaviour
 
     }
 
+ 
+    
+    void ativarHabilidade()
+    {
+        
+        Debug.Log("habilidadeAtual: " + habilidadeAtual);
+
+        if(habilidadeAtual != null)
+        {
+            UltimaHabilidadeUtilizada = habilidadeAtual;
+            habilidadeAtual.Ativar();
+       
+        }
+        
+    }
+
+
+    bool HabilidadeDisponivel()
+    {
+        if(habilidadeAtual != null)
+        {
+            return habilidadeAtual.habilidadeDisponivel;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     void OnDrawGizmos()
     {
         if (atk.visualizar) atk.MostrarCaixa(atk.qualDebug);
+    }
+
+
+    //VERIFICAÇÕES
+    //utilizadas para evitar que o jogador possa realizar duas ações ao mesmo tempos
+
+    public bool EstaNoAr()
+    {
+        return !ChaoS;
+    }
+
+    /* IMPLEMENTAR
+    bool EstaAtacando()
+    {
+
+    }
+    */
+
+
+    public bool EstaEmAcao()
+    {
+        if(EstaNoAr())              return true;
+        if(EstaAtacando())          return true;
+        if(EstaUsandoHabilidade())  return true;
+
+        return false;
+    }
+
+    public bool EstaInvulneravel()
+    {
+        if (habilidadeAtual != null)
+        {
+            return habilidadeAtual.EstaInvulneravel();
+        }
+        else return false;
+    }
+
+    public bool PodeAtravessarInimigos()
+    {
+        if (habilidadeAtual != null)
+        {
+            return habilidadeAtual.PodeAtravessarInimigos();
+        }
+        else return false;
+    }
+
+    public void DesbugarPulo() //quando o jogador fica em cima de algum inimigo ou outra entidade, eh entendido que ele esta no chao (aplicar no OnCollision) - ainda em fase de testes
+    {
+        if (ridi.linearVelocityY == 0)
+        {
+            ChaoS = true;
+        }
+    }
+
+    public bool EstaUsandoHabilidade()
+    {
+        if(UltimaHabilidadeUtilizada != null)
+        {
+            return UltimaHabilidadeUtilizada.habilidadeAtiva;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool EstaAtacando()
+    {
+        return emAtaque;
+    }
+
+    public void InicioAtaque() //chamada no comeco da animacao de ataque
+    {
+        emAtaque = true;
+    }
+
+    public void FimAtaque() //chamada ao fim da animacao de ataque
+    {
+        PermitirProxCombo();
+        emAtaque = false;
+    }
+
+    public void InterromperAcao() //NECESSARIO chamar isso em toda animacao que saia de AnyState e nao seja uma habilidade ou ataque para evitar conflitos
+    {
+        if (UltimaHabilidadeUtilizada != null)
+        {
+            UltimaHabilidadeUtilizada.habilidadeAtiva = false;
+        }
+
+        FimAtaque();
+    }
+
+    public void Morreu() //chamado pelo evento UIvida.OnMorte()
+    {
+        animator.SetTrigger("Morreu");
+    }
+
+    public void LevouDano() //chamado pelo evento UIvida.ReceberDano()
+    {
+        animator.SetTrigger("RecebeuDano");
     }
 }
 

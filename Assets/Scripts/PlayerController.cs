@@ -51,7 +51,7 @@ public class mono : MonoBehaviour
         ridi.AddForce(new Vector2(ridi.linearVelocity.x,100));
         twojump++;
         ChaoS = false;
-        Debug.Log("junp!");
+        Debug.Log("jump!");
     }
 
 
