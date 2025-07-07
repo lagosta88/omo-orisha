@@ -20,6 +20,11 @@ public class flechaDeOxossi : MonoBehaviour
     private GameObject alvo;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    void Awake()
+    {
+        player = FindFirstObjectByType<playerC>();
+    }
     void Start()
     {
         flecha.linearVelocity = new Vector2(velocidadeInicialEmX*player.getDirecao() + player.ridi.linearVelocityX, velocidadeInicialEmY);
@@ -36,7 +41,7 @@ public class flechaDeOxossi : MonoBehaviour
     {
         //Debug.Log("alvo = " + alvo);
 
-        if (alvo == null) //nenhum inimigo detectado quando a flecha é spawnada
+        if (alvo == null) //nenhum inimigo detectado quando a flecha ï¿½ spawnada
         {
             //seguira o caminho definido inicialmente pelo arco
         }

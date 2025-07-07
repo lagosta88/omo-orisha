@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d9166697f0d778245a3cdf1e5819085e
+guid: 0b11ce7ebe1c4f54f9e1cdffc4077378
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5802531607247151510
-    second: Arena 0000_0
+      213: -4529622360507137333
+    second: Sala 04 0000_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Arena 0000_0
+      name: Sala 04 0000_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69161ffe0cbb68050800000000000000
-      internalID: 5802531607247151510
+      spriteID: bc24e4b467c8321c0800000000000000
+      internalID: -4529622360507137333
       vertices: []
       indices: 
       edges: []

@@ -478,6 +478,7 @@ public class playerC : MonoBehaviour
     public void Morreu() //chamado pelo evento UIvida.OnMorte()
     {
         animator.SetTrigger("Morreu");
+        this.enabled = false;
     }
 
     public void LevouDano() //chamado pelo evento UIvida.ReceberDano()

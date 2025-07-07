@@ -15,7 +15,7 @@ public class GerenciadorCenario : MonoBehaviour
     public GameObject telaDeUpgradeCanvas;
     public SpriteRenderer background;
     public List<Vector2> offset = new();
-    public Sprite bgLobby, bgCyber;
+    public Sprite bgLobby, bgCyber, bgCobertura;
     public CameraSala2D cameraSala2D;
     public Transform playerTransform;
     public SpriteRenderer spriteRenderer;
@@ -26,10 +26,12 @@ public class GerenciadorCenario : MonoBehaviour
     public Sala salaAtual;
     public CameraConfig salasPrincipaisConfig;
     private Dictionary<TipoSalas, Sala> outrasSalas = new();
+    public int andar = 0;
     public int salaIndex = 0;
     void Start()
     {
-        spriteRenderer.sprite = inicioAndFim.portaAberta;
+        andar = 0;
+        spriteRenderer.sprite = inicioAndFim.portaAberta[0];
         outrasSalas = new Dictionary<TipoSalas, Sala>()
         {
             { TipoSalas.BOSS, boss },
@@ -58,11 +60,16 @@ public class GerenciadorCenario : MonoBehaviour
         if (destino.ehFimDeAndar)
         {
             // Tela de upgrade
-            selecaoDeUpgrade.TelaDeUpgrade();
             player.gameObject.SetActive(false);
             telaDeUpgradeCanvas.SetActive(true);
-            if (background.sprite == bgCyber) salaIndex -= 6;
-            background.sprite = bgCyber;
+            if (andar == 0)
+                background.sprite = bgCyber;
+            else if (andar == 1)
+                background.sprite = bgCobertura;
+            else
+                background.sprite = bgLobby;
+            selecaoDeUpgrade.TelaDeUpgrade();
+            andar++;
         }
         else
         {
@@ -104,7 +111,7 @@ public class GerenciadorCenario : MonoBehaviour
             );
         }
 
-        spriteRenderer.sprite = prox_sala.portaAberta;
+        spriteRenderer.sprite = prox_sala.portaAberta[andar];
         Invoke(nameof(FecharSala), 1f);
 
         salaAtual.colisores.SetActive(false);
@@ -120,26 +127,21 @@ public class GerenciadorCenario : MonoBehaviour
 
     public void AbrirSala()
     {
-        spriteRenderer.sprite = salaAtual.portaAberta;
+        spriteRenderer.sprite = salaAtual.portaAberta[andar];
     }
 
     void FecharSala()
     {
-        spriteRenderer.sprite = salaAtual.portaFechada;
-    }
-
-    public void TrocarNivel()
-    {
-
+        spriteRenderer.sprite = salaAtual.portaFechada[andar];
     }
 }
 
 [System.Serializable]
-public struct Sala
+public class Sala
 {
     public TipoSalas tipo;
     public GameObject colisores;
-    public Sprite portaFechada;
-    public Sprite portaAberta;
+    public List<Sprite> portaFechada = new(3);
+    public List<Sprite> portaAberta = new(3);
     public CameraConfig cameraConfig;
 }

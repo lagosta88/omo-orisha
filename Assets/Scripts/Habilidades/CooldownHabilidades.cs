@@ -13,19 +13,21 @@ public class CooldownHabilidades : MonoBehaviour
     {
         tambor = GetComponentInParent<TamborDeHabilidades>();
         animator = GetComponent<Animator>();
-       
-
-      
         
         Habilidade.OnHabilidadeFinalizada += AtivarCooldown;
 
         habilidade = tambor.roda[numHabilidade];
-
-        if (habilidade.cooldown != 0)
+        if (habilidade != null)
         {
-            MultiplicadorVelocidadeAnimacao = 1f / habilidade.cooldown;
+            if (habilidade.cooldown != 0)
+            {
+                MultiplicadorVelocidadeAnimacao = 1f / habilidade.cooldown;
+            }
+            else
+            {
+                MultiplicadorVelocidadeAnimacao = 100f;
+            }
         }
-        else { MultiplicadorVelocidadeAnimacao = 100f; };
     }
 
     // Update is called once per frame

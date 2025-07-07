@@ -11,18 +11,23 @@ public class IconeUpgrade : MonoBehaviour
     public GerenciadorCenario gerenciadorCenario;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    void OnEnable()
     {
         SelecaoDeUpgrade.OnInicioTelaDeUpgrade += AtualizarIcone;
     }
 
+    void OnDisable()
+    {
+        SelecaoDeUpgrade.OnInicioTelaDeUpgrade -= AtualizarIcone;
+    }
 
     public void UpgradeBotao()
     {
         Debug.Log("botao apertado!");
 
         Habilidade habilidadeUpgrade = selecaoDeUpgrade.ListaHab[numIcone];
-        if(habilidadeUpgrade != null )
+        if (habilidadeUpgrade != null)
         {
             selecaoDeUpgrade.UpgradeHabilidade(habilidadeUpgrade);
         }

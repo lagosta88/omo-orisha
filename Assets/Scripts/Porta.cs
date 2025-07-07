@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Porta : MonoBehaviour
@@ -38,6 +37,8 @@ public class Porta : MonoBehaviour
                 todosMortos = false;
         }
         canPass = todosMortos;
-        gerenciadorCenario.spriteRenderer.sprite = canPass ? gerenciadorCenario.salaAtual.portaAberta : gerenciadorCenario.salaAtual.portaFechada;
+        Sala atual = gerenciadorCenario.salaAtual;
+        int andar = gerenciadorCenario.andar;
+        gerenciadorCenario.spriteRenderer.sprite = canPass ? atual.portaAberta[andar] : atual.portaFechada[andar];
     }
 }

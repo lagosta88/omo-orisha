@@ -25,7 +25,7 @@ public class TamborDeHabilidades : MonoBehaviour
 
     void Start()
     {
-        SelecaoDeUpgrade.OnUpgrade += UpgradeHabilidade; //faz a funcao AdicionarHabilidade ser chamada após uma habilidade receber upgrade]s
+        SelecaoDeUpgrade.OnUpgrade += UpgradeHabilidade; //faz a funcao AdicionarHabilidade ser chamada apï¿½s uma habilidade receber upgrade]s
 
         EmRotacao = false;
 
@@ -47,7 +47,7 @@ public class TamborDeHabilidades : MonoBehaviour
 
     //Funcoes para animacao
 
-    //Funcionamento: botao é apertado: RodarParaEsquerda. Animacao troca de frame: TrocaDeFrameEsquerda. TrocaDeFrameEsquerda chama OnGirandoEsquerda, avisando aos icones para trocar de posicao
+    //Funcionamento: botao ï¿½ apertado: RodarParaEsquerda. Animacao troca de frame: TrocaDeFrameEsquerda. TrocaDeFrameEsquerda chama OnGirandoEsquerda, avisando aos icones para trocar de posicao
 
     //Essas servem para avisar quando a animacao de rodar deve acontecer
     public void RodarParaEsquerda()
@@ -145,7 +145,8 @@ public class TamborDeHabilidades : MonoBehaviour
         int qtd = 0;
         foreach (Habilidade hab in roda)
         {
-            qtd++;
+            if (hab != null)
+                qtd++;
         }
         return qtd;
     }
