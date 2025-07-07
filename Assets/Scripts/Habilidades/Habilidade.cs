@@ -4,32 +4,59 @@ public abstract class Habilidade : MonoBehaviour //essa classe servira de base p
 {
 
     [Range(0, 3)] public int nivel = 0;
-    public Cooldown cooldown;
+   
     public Animator animator;
     public Sprite icone;
     public bool habilidadeAtiva = false; //sempre que uma habilidade for iniciada, habilidade ativa deve ser true. apos o fim dela, ela deve ser false
     protected bool invulnerabilidade = false;
     protected bool atravessarInimigos = false;
 
+    //variaveis do cooldown
+    public float cooldown;
+    private float tempoAtual;
+    public bool habilidadeDisponivel = true;
 
-
-    public float tempoCooldown; //tempo entre uma ativacao e outra
+    public delegate void HabilidadeFinalizada();
+    public static event HabilidadeFinalizada OnHabilidadeFinalizada;
 
 
     public void Start()
     {
         animator = GetComponent<Animator>();
-    }
-
-    public Habilidade()
-    {
-        cooldown = new Cooldown(tempoCooldown);
+        tempoAtual = cooldown;
     }
 
 
     public virtual void Ativar() //toda habilidade tem que ter uma forma de ser ativada. eh o que ocorre quando se aperta o botao de usar a habilidade
     {
+        habilidadeAtiva = true;
+        
+        
+      
+    }
 
+    public void FimDaHabilidade()
+    {
+        if(OnHabilidadeFinalizada != null)
+        {
+            OnHabilidadeFinalizada();
+        }
+
+        tempoAtual = 0;
+        habilidadeDisponivel = false;
+        habilidadeAtiva = false;
+
+    }
+    public void Update()
+    {
+        if (tempoAtual < cooldown) //avanca o tempoAtual se a habilidade estiver em cooldown
+        {
+            tempoAtual += Time.deltaTime;
+        }
+        else
+        {
+            habilidadeDisponivel = true;
+        }
     }
 
     //verificacoes (para passar para o playerC)

@@ -14,6 +14,7 @@ public class Arco : Habilidade
     public float offsetY;
     public override void Ativar()
     {
+        base.Ativar();
 
         habilidadeAtiva = true;
 
@@ -88,7 +89,7 @@ public class Arco : Habilidade
 
     public void FinalizarArco() //chamado pela animacao
     {
-        habilidadeAtiva = false;
+        base.FimDaHabilidade();
     }
 
 

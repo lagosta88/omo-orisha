@@ -8,17 +8,14 @@ public class Terremoto : Habilidade
 
     public override void Ativar()
     {
+        base.Ativar();
+
         habilidadeAtiva = true;
 
         atk.comboAtual = nivel - 1;
 
         animator.SetTrigger(atk.nomesTrigger[nivel - 1]);
 
-        
-    }
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 
@@ -30,7 +27,7 @@ public class Terremoto : Habilidade
 
     public void FinalizarTerremoto() //chamado pela animacao
     {
-        habilidadeAtiva = false;
+        base.FimDaHabilidade();
     }
 
     void OnDrawGizmos()

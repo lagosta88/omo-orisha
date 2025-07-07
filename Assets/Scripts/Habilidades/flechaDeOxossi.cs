@@ -5,7 +5,7 @@ public class flechaDeOxossi : MonoBehaviour
 {
 
     public Rigidbody2D flecha;
-    public AreaDetectoraDeInimigos area;
+    public AreaDetectora area;
     public playerC player;
 
     public float velocidadeInicialEmX;
@@ -73,16 +73,16 @@ public class flechaDeOxossi : MonoBehaviour
         return anguloEmGraus;
     }
 
-        void OnCollisionEnter2D(Collision2D collision)
+        void OnTriggerEnter2D(Collider2D collider)
         {
-
-            if (collision.collider.CompareTag("Inimigo")) // Quando colidir com inimigo perde 10 de vida
+               
+            if (collider.CompareTag("Inimigo")) // Quando colidir com inimigo perde 10 de vida
             {
             //adicionar dano ao inimigo
             Destroy(gameObject);
             }
 
-        if (collision.collider.CompareTag("parede"))
+        if (collider.CompareTag("parede"))
             { // Quando colidir com chao a variavel fica true
 
             Destroy(gameObject);

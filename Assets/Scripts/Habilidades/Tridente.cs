@@ -19,6 +19,7 @@ public class Tridente : Habilidade
 
     public override void Ativar()
     {
+        base.Ativar();
 
         habilidadeAtiva = true;
 
@@ -58,7 +59,7 @@ public class Tridente : Habilidade
 
     public void FinalizarTridente() //chamado pela animacao
     {
-        habilidadeAtiva = false;
+        base.FimDaHabilidade();
     }
 
 

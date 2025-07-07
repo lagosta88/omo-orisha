@@ -19,6 +19,7 @@ public class Investida : Habilidade
 
     public override void Ativar()
     {
+        base.Ativar();
 
         animator.SetTrigger("Investida");
 
@@ -61,6 +62,8 @@ public class Investida : Habilidade
         habilidadeAtiva = false;
         animator.SetTrigger("FimDaHabilidade");
         contadorTempo = 0;
+
+        FimDaHabilidade();
 
 
     }

@@ -10,6 +10,12 @@ public class UIvida : MonoBehaviour
     private int vidamaxima = 100;
     private int vidaatual;
 
+    public delegate void Morreu();
+    public static event Morreu OnMorte;
+
+    public delegate void ReceberDano();
+    public static event ReceberDano OnReceberDano;
+
     void Start()
     {
         vidaatual = vidamaxima;
@@ -24,10 +30,13 @@ public class UIvida : MonoBehaviour
     public void Dano(int qnt)
     {
         vidaatual -= qnt;
+        if(OnReceberDano != null) OnReceberDano();
+
         if (vidaatual < 0)
         {
             vidaatual = 0;
             Debug.Log("VOCE MORREU");
+            if(OnMorte !=null) OnMorte();
         } // reduz a variavel vidaatual e se for menor que zero volta para zero
 
         Slidervida.value = vidaatual;

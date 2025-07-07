@@ -27,7 +27,7 @@ public class playerC : MonoBehaviour
     public Habilidade habilidadeAtual;
     public Collider2D colliderChao;
     public bool tocouOChao;
-    private Habilidade UltimaHabilidadeUtilizada = null;
+    public Habilidade UltimaHabilidadeUtilizada = null;
     public float atritoHabilidade; //desaceleracao sofrida pelo player ao usar uma habilidades
     public bool emAtaque = false;
 
@@ -45,6 +45,9 @@ public class playerC : MonoBehaviour
         twojump = 1;
         atk.player = true;
         //  posicao.localPosition = new Vector3(0,0,0);
+
+        UIvida.OnMorte += Morreu; //quando a vida do jogador chegar a zero (controlado por UIvida), chamar a funcao Morreu()
+        UIvida.OnReceberDano += LevouDano;
 
       
 
@@ -141,7 +144,9 @@ public class playerC : MonoBehaviour
         
         if (Input.GetMouseButtonDown(1))
         {
-            if (!EstaUsandoHabilidade() && !EstaAtacando()) { 
+            habilidadeAtual = tambor.roda[tambor.numRodaAtual];
+            if (!EstaUsandoHabilidade() && !EstaAtacando() && HabilidadeDisponivel()) { 
+
             ativarHabilidade();
             }
         }
@@ -348,7 +353,7 @@ public class playerC : MonoBehaviour
     
     void ativarHabilidade()
     {
-        habilidadeAtual = tambor.roda[tambor.numRodaAtual];
+        
         Debug.Log("habilidadeAtual: " + habilidadeAtual);
 
         if(habilidadeAtual != null)
@@ -358,6 +363,19 @@ public class playerC : MonoBehaviour
        
         }
         
+    }
+
+
+    bool HabilidadeDisponivel()
+    {
+        if(habilidadeAtual != null)
+        {
+            return habilidadeAtual.habilidadeDisponivel;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     void OnDrawGizmos()
@@ -453,6 +471,16 @@ public class playerC : MonoBehaviour
         }
 
         FimAtaque();
+    }
+
+    public void Morreu() //chamado pelo evento UIvida.OnMorte()
+    {
+        animator.SetTrigger("Morreu");
+    }
+
+    public void LevouDano() //chamado pelo evento UIvida.ReceberDano()
+    {
+        animator.SetTrigger("RecebeuDano");
     }
 }
 
