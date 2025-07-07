@@ -38,7 +38,7 @@ public class movimentopistola : InimigoGeral
     {
 
 
-        transform.right = target.position - transform.position; 
+        
 
         if (Slider.vidaatual <= 0)
         {
@@ -48,7 +48,6 @@ public class movimentopistola : InimigoGeral
         }
 
 
-
         if (target == null) return;
 
         // Move apenas no eixo X
@@ -56,6 +55,10 @@ public class movimentopistola : InimigoGeral
         float distanciaAbsoluta = Mathf.Abs(distanciaX);
         float direcao = Mathf.Sign(distanciaX);
         float minDistancia = 3f;
+
+
+        //diz para onde o inimigo esta apontando
+        transform.right = new Vector3(-direcao, 0, 0);
 
     if (distanciaAbsoluta > minDistancia + 0.5f)
         {
