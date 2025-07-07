@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movimentopistola : MonoBehaviour
+public class movimentopistola : InimigoGeral
 {
     public float speed = 2f;
     public float jumpForce = 5f;
@@ -10,8 +10,10 @@ public class movimentopistola : MonoBehaviour
     private bool ChaoS;
     private Transform target;
     private Rigidbody2D rb;
-    public VidaInimigo Slider;
     public AtkHitBox hitbox;
+    public float tempoEntreAtaques;
+    public GameObject projetilPrefab;
+    public Vector3 deslocamentoSpawnProjetil;
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -24,8 +26,11 @@ public class movimentopistola : MonoBehaviour
         while (Slider.vidaatual > 0)
         {
 
+            GameObject projetil = Instantiate(projetilPrefab, transform.position + deslocamentoSpawnProjetil, Quaternion.identity);
+            projetil.GetComponent<ProjetilPistola>().alvo = target.gameObject;
+            
             hitbox.VerificarAtk(10);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(tempoEntreAtaques);
 
         }
     }

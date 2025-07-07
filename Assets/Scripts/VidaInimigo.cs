@@ -7,7 +7,7 @@ public class VidaInimigo : MonoBehaviour
     public Gradient gradiente;
     public Image fill;
 
-    private int vidamaxima = 20;
+    public int vidamaxima = 20;
     public int vidaatual;
 
     void Start()

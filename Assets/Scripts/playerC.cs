@@ -272,7 +272,7 @@ public class playerC : MonoBehaviour
         //    Madd.Dano(10);
 
             //DesbugarPulo();
-        }
+        
 
         if (collision.collider.CompareTag("Cura"))
         {

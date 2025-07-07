@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movimento_inimigo : MonoBehaviour
+public class movimento_inimigo : InimigoGeral
 {
     public float speed = 2f;
     public float jumpForce = 5f;
@@ -10,7 +10,6 @@ public class movimento_inimigo : MonoBehaviour
     private bool ChaoS;
     private Transform target;
     private Rigidbody2D rb;
-    public VidaInimigo Slider;
     public AtkHitBox hitbox;
     void Start()
     {

@@ -37,10 +37,14 @@ public class AtkHitBox //Não pode derivar do MonoBehaviour
             // Chamar aqui algo como:
 
             if (player)
-                item.gameObject.GetComponent<movimento_inimigo>().Slider.Dano((int)danoCausado);
+            {
+                if (item.gameObject.TryGetComponent<InimigoGeral>( out InimigoGeral componente)){
+                    componente.Slider.Dano((int)danoCausado);
+                }
+            }
             else
             {
-                
+
                 item.gameObject.GetComponent<playerC>().Madd.Dano((int)danoCausado);
 
             }
