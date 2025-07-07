@@ -9,6 +9,7 @@ public class Porta : MonoBehaviour
     public Porta proxPorta;
     public KeyCode teclaTeleporte = KeyCode.L;
     private bool jogadorNaArea;
+    public bool ehFimDeAndar = false;
 
     void OnTriggerEnter2D(Collider2D collision)
     {

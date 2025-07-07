@@ -10,6 +10,9 @@ public enum TipoSalas
 }
 public class GerenciadorCenario : MonoBehaviour
 {
+    public playerC player;
+    public SelecaoDeUpgrade selecaoDeUpgrade;
+    public GameObject telaDeUpgradeCanvas;
     public SpriteRenderer background;
     public List<Vector2> offset = new();
     public Sprite bgLobby, bgCyber;
@@ -52,57 +55,67 @@ public class GerenciadorCenario : MonoBehaviour
     {
         Debug.Log("Trocando de sala");
 
-        if (salaIndex == 5)
+        if (destino.ehFimDeAndar)
         {
             // Tela de upgrade
+            selecaoDeUpgrade.TelaDeUpgrade();
+            player.gameObject.SetActive(false);
+            telaDeUpgradeCanvas.SetActive(true);
+            if (background.sprite == bgCyber) salaIndex -= 6;
             background.sprite = bgCyber;
         }
         else
         {
-            int index = Random.Range(0, salasPrincipais.Count);
-            background.transform.position = offset[++salaIndex];
-            Sala prox_sala = (destino.tipoDeDestino == TipoSalas.SALA_COMUM) ?
-                salasPrincipais[index] : outrasSalas[destino.tipoDeDestino];
-
-            if (prox_sala.tipo == TipoSalas.SALA_COMUM)
-            {
-                cameraSala2D.TeleportarParaNovaSala(
-                    playerTransform,
-                    salasPrincipaisConfig.tamanhoSala,
-                    spriteRenderer.gameObject.transform.position,
-                    prox_sala.tipo
-                );
-            }
-            else
-            {
-                cameraSala2D.TeleportarParaNovaSala(
-                    playerTransform,
-                    prox_sala.cameraConfig.tamanhoSala,
-                    spriteRenderer.gameObject.transform.position,
-                    prox_sala.tipo
-                );
-            }
-
-            spriteRenderer.sprite = prox_sala.portaAberta;
-            Invoke(nameof(FecharSala), 1f);
-
-            salaAtual.colisores.SetActive(false);
-            if (salaAtual.tipo == TipoSalas.SALA_COMUM)
-                salaAtual.colisores.transform.parent.gameObject.SetActive(false);
-
-            salaAtual = prox_sala;
-
-            salaAtual.colisores.SetActive(true);
-            if (salaAtual.tipo == TipoSalas.SALA_COMUM)
-                salaAtual.colisores.transform.parent.gameObject.SetActive(true);
+            telaDeUpgradeCanvas.SetActive(false);
         }
+        ProxSala(destino);
 
         if (destino.proxPorta != null)
         {
             destino.proxPorta.gameObject.SetActive(true);
-            Destroy(destino.gameObject);
+            destino.gameObject.SetActive(false);
         }
         playerTransform.position = destino.Destino.position;
+    }
+
+    void ProxSala(Porta destino)
+    {
+        int index = Random.Range(0, salasPrincipais.Count);
+        background.transform.position = offset[++salaIndex];
+        Sala prox_sala = (destino.tipoDeDestino == TipoSalas.SALA_COMUM) ?
+            salasPrincipais[index] : outrasSalas[destino.tipoDeDestino];
+
+        if (prox_sala.tipo == TipoSalas.SALA_COMUM)
+        {
+            cameraSala2D.TeleportarParaNovaSala(
+                playerTransform,
+                salasPrincipaisConfig.tamanhoSala,
+                spriteRenderer.gameObject.transform.position,
+                prox_sala.tipo
+            );
+        }
+        else
+        {
+            cameraSala2D.TeleportarParaNovaSala(
+                playerTransform,
+                prox_sala.cameraConfig.tamanhoSala,
+                spriteRenderer.gameObject.transform.position,
+                prox_sala.tipo
+            );
+        }
+
+        spriteRenderer.sprite = prox_sala.portaAberta;
+        Invoke(nameof(FecharSala), 1f);
+
+        salaAtual.colisores.SetActive(false);
+        if (salaAtual.tipo == TipoSalas.SALA_COMUM)
+            salaAtual.colisores.transform.parent.gameObject.SetActive(false);
+
+        salaAtual = prox_sala;
+
+        salaAtual.colisores.SetActive(true);
+        if (salaAtual.tipo == TipoSalas.SALA_COMUM)
+            salaAtual.colisores.transform.parent.gameObject.SetActive(true);
     }
 
     public void AbrirSala()
