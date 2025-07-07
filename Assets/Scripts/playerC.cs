@@ -190,12 +190,8 @@ public class playerC : MonoBehaviour
         {
             if (atk.comboDisponivel && Time.time - atk.momentoUltimoAtaque <= atk.janelaDeCombo && !EstaUsandoHabilidade())
             {
-<<<<<<< HEAD
                 //Segue o combo
                 atk.atacando = true;
-=======
-                //Segue o combos
->>>>>>> origin/merge-lucca-cezi
                 ExecuteCombo(atk.comboAtual);
                 atk.comboAtual = (atk.comboAtual + 1) % atk.nomesTrigger.Count; //Isso torna o combo cíclio, após a última etapa volta à primeira
             }

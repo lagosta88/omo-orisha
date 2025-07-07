@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public class SelecaoDeUpgrade : MonoBehaviour
 {
 
-    public List<Habilidade> ListaHab; //lista com todas as habilidades disponiveis no jogo
-    private int nivelMaximo = 3;
+    public List<Habilidade> ListaHab = new(); //lista com todas as habilidades disponiveis no jogo
+    private readonly int nivelMaximo = 3;
     public TamborDeHabilidades tambor;
 
 
@@ -22,7 +22,7 @@ public class SelecaoDeUpgrade : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
 
         //TESTE - REMOVER DEPOIS
@@ -33,9 +33,9 @@ public class SelecaoDeUpgrade : MonoBehaviour
         }
 
 
-    }
+    }*/
 
-    void TelaDeUpgrade()
+    public void TelaDeUpgrade()
     {
         AleatorizarUpgrades();
         OnInicioTelaDeUpgrade();

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "omo-orisha-main.sln"
+    "dotnet.defaultSolution": "omo-orisha.sln"
 }
