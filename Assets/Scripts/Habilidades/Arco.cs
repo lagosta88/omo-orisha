@@ -1,0 +1,99 @@
+using UnityEngine;
+
+public class Arco : Habilidade
+{
+
+    public GameObject flecha;
+    private Vector3 posicaoInicial;
+    public GameObject player;
+    public float velocidadeYLvl2;
+    public float velocidadeYLvl3;
+    public float tempoDeVida;
+
+    public float offsetX;
+    public float offsetY;
+    public override void Ativar()
+    {
+        base.Ativar();
+
+        habilidadeAtiva = true;
+
+        //animacao
+        switch (nivel)
+        {
+            
+            case 1:
+                animator.SetTrigger("ArcoLvl1");
+                break;
+            case 2:
+                animator.SetTrigger("ArcoLvl2");
+                break;
+            case 3:
+                animator.SetTrigger("ArcoLvl3");
+                break;
+
+            default: animator.SetTrigger("ArcoLvl3");
+                break;
+        }
+   
+        //flechas sao disparadas pela animacao ao chamar AtirarFlechas
+        
+    }
+
+    public void AtirarFlechas()//chamado pela animacao
+    {
+
+        posicaoInicial = player.transform.position + new Vector3(offsetX,offsetY, 0);
+
+        if (nivel >= 1)
+        {
+
+            GameObject flecha1 = Instantiate(flecha, posicaoInicial, Quaternion.identity);
+            Destroy(flecha1, tempoDeVida);
+        }
+
+        if (nivel >= 2)
+        {
+
+            GameObject flecha2 = Instantiate(flecha, posicaoInicial, Quaternion.identity);
+
+            flecha2.GetComponent<flechaDeOxossi>().velocidadeInicialEmY = velocidadeYLvl2;
+            Destroy(flecha2, tempoDeVida);
+
+
+            GameObject flecha3 = Instantiate(flecha, posicaoInicial, Quaternion.identity);
+
+            flecha3.GetComponent<flechaDeOxossi>().velocidadeInicialEmY = -velocidadeYLvl2;
+            Destroy(flecha3, tempoDeVida);
+
+
+        }
+
+        if (nivel >= 3)
+        {
+
+            GameObject flecha4 = Instantiate(flecha, posicaoInicial, Quaternion.identity);
+
+            flecha4.GetComponent<flechaDeOxossi>().velocidadeInicialEmY = velocidadeYLvl3;
+            Destroy(flecha4, tempoDeVida);
+
+
+            GameObject flecha5 = Instantiate(flecha, posicaoInicial, Quaternion.identity);
+
+            flecha5.GetComponent<flechaDeOxossi>().velocidadeInicialEmY = -velocidadeYLvl3;
+            Destroy(flecha5, tempoDeVida);
+
+
+        }
+    }
+
+    public void FinalizarArco() //chamado pela animacao
+    {
+        base.FimDaHabilidade();
+    }
+
+
+
+}
+
+

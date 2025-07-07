@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TerremotoLvl2
+  serializedVersion: 7
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - serializedVersion: 2
+    curve:
+    - time: 0
+      value: {fileID: 6332508212628107378, guid: e021f27d54efc6746b54862fcf2eb136, type: 3}
+    - time: 0.083333336
+      value: {fileID: -7128864329670067086, guid: a82a07ceb35e2e84785f1c6d1880f59e, type: 3}
+    - time: 0.16666667
+      value: {fileID: 3428395114928582310, guid: f46ea1df6a2a80544a7e9525eeb7428f, type: 3}
+    - time: 0.25
+      value: {fileID: 1207136604099726554, guid: 6f1625589134ea9468bb7a97175e69dd, type: 3}
+    - time: 0.33333334
+      value: {fileID: 708978945420573496, guid: 64a282706e370374da3f392c8fb21286, type: 3}
+    - time: 0.41666666
+      value: {fileID: -5102232553396612268, guid: 64fd88372661aeb4788f6d5ba2d72d00, type: 3}
+    - time: 0.5
+      value: {fileID: -3992024442701165543, guid: 040c76555494c784eb2620619a8b4b4d, type: 3}
+    - time: 0.5833333
+      value: {fileID: 7573902242463882196, guid: 941b3305e4456c247b03ecd53023e585, type: 3}
+    - time: 0.6666667
+      value: {fileID: 2568257273129416628, guid: f2ae1ff2e4245f343875f608becb55c5, type: 3}
+    - time: 0.75
+      value: {fileID: 1240838646391318865, guid: ae3cacf2022c09740850662e042fc3cf, type: 3}
+    - time: 0.8333333
+      value: {fileID: 1219974272731795801, guid: 72e4b753d7a004645ad45dd792e98ca2, type: 3}
+    - time: 0.9166667
+      value: {fileID: -7175187539133253148, guid: 3cf59af7a8d73e84dbb96d4876e79e56, type: 3}
+    - time: 1
+      value: {fileID: -7438186978373894321, guid: 0d9c74fbf3750fe4dbbd4833bc2e2ae4, type: 3}
+    - time: 1.0833334
+      value: {fileID: -5660696192579230906, guid: c67d6c6b0dbd17543879efbd16cb6344, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+    flags: 2
+  m_SampleRate: 12
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: 6332508212628107378, guid: e021f27d54efc6746b54862fcf2eb136, type: 3}
+    - {fileID: -7128864329670067086, guid: a82a07ceb35e2e84785f1c6d1880f59e, type: 3}
+    - {fileID: 3428395114928582310, guid: f46ea1df6a2a80544a7e9525eeb7428f, type: 3}
+    - {fileID: 1207136604099726554, guid: 6f1625589134ea9468bb7a97175e69dd, type: 3}
+    - {fileID: 708978945420573496, guid: 64a282706e370374da3f392c8fb21286, type: 3}
+    - {fileID: -5102232553396612268, guid: 64fd88372661aeb4788f6d5ba2d72d00, type: 3}
+    - {fileID: -3992024442701165543, guid: 040c76555494c784eb2620619a8b4b4d, type: 3}
+    - {fileID: 7573902242463882196, guid: 941b3305e4456c247b03ecd53023e585, type: 3}
+    - {fileID: 2568257273129416628, guid: f2ae1ff2e4245f343875f608becb55c5, type: 3}
+    - {fileID: 1240838646391318865, guid: ae3cacf2022c09740850662e042fc3cf, type: 3}
+    - {fileID: 1219974272731795801, guid: 72e4b753d7a004645ad45dd792e98ca2, type: 3}
+    - {fileID: -7175187539133253148, guid: 3cf59af7a8d73e84dbb96d4876e79e56, type: 3}
+    - {fileID: -7438186978373894321, guid: 0d9c74fbf3750fe4dbbd4833bc2e2ae4, type: 3}
+    - {fileID: -5660696192579230906, guid: c67d6c6b0dbd17543879efbd16cb6344, type: 3}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 1.1666667
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 1
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events:
+  - time: 0.5
+    functionName: AtivarHitbox
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.0833334
+    functionName: FinalizarTerremoto
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
