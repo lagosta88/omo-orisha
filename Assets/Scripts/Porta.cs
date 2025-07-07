@@ -1,21 +1,22 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Porta : MonoBehaviour
 {
     public playerC player;
+    public Gerador gerador;
     public GerenciadorCenario gerenciadorCenario;
     public TipoSalas tipoDeDestino;
     public Transform Destino => transform.GetChild(0);
     public Porta proxPorta;
-    public KeyCode teclaTeleporte = KeyCode.L;
-    private bool jogadorNaArea;
     public bool ehFimDeAndar = false;
+    private bool canPass;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(player.tag))
         {
-            jogadorNaArea = true;
+            if (canPass) gerenciadorCenario.TrocarSala(this);
             // Feedback visual (ex: highlight na porta)
         }
     }
@@ -24,16 +25,19 @@ public class Porta : MonoBehaviour
     {
         if (collision.CompareTag(player.tag))
         {
-            jogadorNaArea = false;
             // Remover feedback visual
         }
     }
 
     void Update()
     {
-        if (jogadorNaArea && Input.GetKeyDown(teclaTeleporte))
+        bool todosMortos = true;
+        foreach (var item in gerador.inimigosSpawnados)
         {
-            gerenciadorCenario.TrocarSala(this);
+            if (item != null)
+                todosMortos = false;
         }
+        canPass = todosMortos;
+        gerenciadorCenario.spriteRenderer.sprite = canPass ? gerenciadorCenario.salaAtual.portaAberta : gerenciadorCenario.salaAtual.portaFechada;
     }
 }
