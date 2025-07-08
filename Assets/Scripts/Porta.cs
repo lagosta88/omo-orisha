@@ -15,6 +15,8 @@ public class Porta : MonoBehaviour
     {
         if (collision.CompareTag(player.tag))
         {
+            if (tipoDeDestino == TipoSalas.ARENA && gerenciadorCenario.andar != 0)
+                tipoDeDestino = TipoSalas.SALA_COMUM;
             if (canPass) gerenciadorCenario.TrocarSala(this);
             // Feedback visual (ex: highlight na porta)
         }

@@ -1,28 +1,45 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
-public class Gerador : MonoBehaviour {
-
-   public GameObject LugarDoSpawn;
-   public GameObject[] inimigos; // linke inimigos aqui
-   public List<GameObject> inimigosSpawnados = new();
+public class Gerador : MonoBehaviour
+{
+   public GerenciadorCenario gerenciadorCenario;
+   public InimigoGeral[] inimigos;
+   public List<InimigoGeral> inimigosSpawnados = new();
    public int minimoDeInimigos = 1, maximoDeInimigos = 10;//ajuste o minimo e o maximo para o sorteio
-   private GameObject jogador;
-   public float DistanciaParaSpawn = 10;
+   public float coolDownEntreSpawn;
    private int quantidade;
-   private bool realizarSpawn;
 
-   void Start (){
-      realizarSpawn = false;
-      jogador = GameObject.FindWithTag ("Player");
-      quantidade = Random.Range (minimoDeInimigos, maximoDeInimigos); // aqui acontece o sorteio da quantidade de inimigos
+   public void IniciarSpawn(bool ehBoss = false)
+   {
+      quantidade = Random.Range(
+         minimoDeInimigos + 3 * gerenciadorCenario.andar,
+         maximoDeInimigos + 3 * gerenciadorCenario.andar
+      );
+      if (ehBoss) quantidade *= 4;
+      StartCoroutine(RotinaSpawn());
    }
-   void Update () {
-      if(Vector3.Distance (jogador.transform.position,transform.position) <= DistanciaParaSpawn && realizarSpawn == false){
-         for (int x = 0; x < quantidade; x++) {
-            inimigosSpawnados.Add(Instantiate (inimigos[Random.Range (0,inimigos.Length)],LugarDoSpawn.transform.position,transform.rotation)); // instancia um inimigo aleatorio
+
+   IEnumerator RotinaSpawn()
+   {
+      int j = 0;
+      Sala atual = gerenciadorCenario.salaAtual;
+      if (atual.spawnPoints.Count > 0)
+      {
+         for (int i = 0; i < quantidade; i++)
+         {
+            InimigoGeral novo = Instantiate(
+               inimigos[Random.Range(0, inimigos.Length)],
+               atual.spawnPoints[j]
+            );
+            novo.SetupGerador(this);
+            inimigosSpawnados.Add(novo);
+            yield return new WaitForSeconds(coolDownEntreSpawn);
+            j = (j + 1) % atual.spawnPoints.Count;
          }
-         realizarSpawn = true;
       }
+      else
+         yield return null;
    }
 }

@@ -11,13 +11,12 @@ public enum TipoSalas
 public class GerenciadorCenario : MonoBehaviour
 {
     public playerC player;
+    public Gerador geradorDeInimigos;
     public SelecaoDeUpgrade selecaoDeUpgrade;
-    public GameObject telaDeUpgradeCanvas;
     public SpriteRenderer background;
     public List<Vector2> offset = new();
     public Sprite bgLobby, bgCyber, bgCobertura;
     public CameraSala2D cameraSala2D;
-    public Transform playerTransform;
     public SpriteRenderer spriteRenderer;
     public List<Sala> salasPrincipais;
     public Sala arena;
@@ -51,17 +50,22 @@ public class GerenciadorCenario : MonoBehaviour
         salaAtual.colisores.SetActive(true);
         background.sprite = bgLobby;
         background.transform.position = offset[0];
+
+        foreach (Sala sala in salasPrincipais)
+        {
+            (sala.portaFechada[2], sala.portaAberta[2]) = (sala.portaAberta[2], sala.portaFechada[2]);
+        }
     }
 
     public void TrocarSala(Porta destino)
     {
         Debug.Log("Trocando de sala");
-
+        player.Madd.Cura(10000); //recupera vida ao trocar de sala
         if (destino.ehFimDeAndar)
         {
             // Tela de upgrade
             player.gameObject.SetActive(false);
-            telaDeUpgradeCanvas.SetActive(true);
+            selecaoDeUpgrade.gameObject.SetActive(true);
             if (andar == 0)
                 background.sprite = bgCyber;
             else if (andar == 1)
@@ -73,7 +77,7 @@ public class GerenciadorCenario : MonoBehaviour
         }
         else
         {
-            telaDeUpgradeCanvas.SetActive(false);
+            selecaoDeUpgrade.gameObject.SetActive(false);
         }
         ProxSala(destino);
 
@@ -82,7 +86,9 @@ public class GerenciadorCenario : MonoBehaviour
             destino.proxPorta.gameObject.SetActive(true);
             destino.gameObject.SetActive(false);
         }
-        playerTransform.position = destino.Destino.position;
+        player.transform.position = destino.Destino.position;
+        salaAtual.SetupSpawnPoints();
+        geradorDeInimigos.IniciarSpawn();
     }
 
     void ProxSala(Porta destino)
@@ -95,7 +101,7 @@ public class GerenciadorCenario : MonoBehaviour
         if (prox_sala.tipo == TipoSalas.SALA_COMUM)
         {
             cameraSala2D.TeleportarParaNovaSala(
-                playerTransform,
+                player.transform,
                 salasPrincipaisConfig.tamanhoSala,
                 spriteRenderer.gameObject.transform.position,
                 prox_sala.tipo
@@ -104,7 +110,7 @@ public class GerenciadorCenario : MonoBehaviour
         else
         {
             cameraSala2D.TeleportarParaNovaSala(
-                playerTransform,
+                player.transform,
                 prox_sala.cameraConfig.tamanhoSala,
                 spriteRenderer.gameObject.transform.position,
                 prox_sala.tipo
@@ -144,4 +150,14 @@ public class Sala
     public List<Sprite> portaFechada = new(3);
     public List<Sprite> portaAberta = new(3);
     public CameraConfig cameraConfig;
+    public List<Transform> spawnPoints = new();
+    public Transform spawnPointPai;
+
+    public void SetupSpawnPoints()
+    {
+        spawnPoints.Clear();
+        if (spawnPointPai == null) return;
+        for (int i = 0; i < spawnPointPai.childCount; i++)
+            spawnPoints.Add(spawnPointPai.GetChild(i));
+    }
 }

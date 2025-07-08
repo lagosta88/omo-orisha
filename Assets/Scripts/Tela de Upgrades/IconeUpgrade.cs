@@ -10,8 +10,6 @@ public class IconeUpgrade : MonoBehaviour
     public Sprite iconeVazio;
     public GerenciadorCenario gerenciadorCenario;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     void OnEnable()
     {
         SelecaoDeUpgrade.OnInicioTelaDeUpgrade += AtualizarIcone;
@@ -32,7 +30,7 @@ public class IconeUpgrade : MonoBehaviour
             selecaoDeUpgrade.UpgradeHabilidade(habilidadeUpgrade);
         }
 
-        gerenciadorCenario.telaDeUpgradeCanvas.SetActive(false);
+        gerenciadorCenario.selecaoDeUpgrade.gameObject.SetActive(false);
         gerenciadorCenario.player.gameObject.SetActive(true);
     }
     void AtualizarIcone()

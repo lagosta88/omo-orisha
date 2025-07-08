@@ -245,6 +245,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   fill: {fileID: 7071130888513293674}
+  vidamaxima: 20
   vidaatual: 0
 --- !u!1 &9145017147125498719
 GameObject:
@@ -275,7 +276,7 @@ Transform:
   m_GameObject: {fileID: 9145017147125498719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.35, y: -5.64, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -422,10 +423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d074f41d2bfaa72458b19cc4997832a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Slider: {fileID: 2927782567418401890}
+  gerador: {fileID: 0}
   speed: 2
   jumpForce: 5
   jumpThreshold: 1.5
-  Slider: {fileID: 2927782567418401890}
   hitbox:
     centrosDeAtaque:
     - {fileID: 8020473322419394697}
@@ -437,8 +439,13 @@ MonoBehaviour:
     comboAtual: 0
     nomesTrigger: []
     player: 0
+    atacando: 0
+    ataqueHabilitado: 1
     visualizar: 1
     qualDebug: 0
+  tempoEntreAtaques: 0
+  projetilPrefab: {fileID: 0}
+  deslocamentoSpawnProjetil: {x: 0, y: 0, z: 0}
 --- !u!1 &9209550072928120293
 GameObject:
   m_ObjectHideFlags: 0
