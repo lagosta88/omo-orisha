@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum TipoSalas
 {
@@ -10,6 +11,7 @@ public enum TipoSalas
 }
 public class GerenciadorCenario : MonoBehaviour
 {
+    public GameObject uiFimDeJogo;
     public playerC player;
     public Gerador geradorDeInimigos;
     public SelecaoDeUpgrade selecaoDeUpgrade;
@@ -29,6 +31,7 @@ public class GerenciadorCenario : MonoBehaviour
     public int salaIndex = 0;
     void Start()
     {
+        uiFimDeJogo.SetActive(false);
         andar = 0;
         spriteRenderer.sprite = inicioAndFim.portaAberta[0];
         outrasSalas = new Dictionary<TipoSalas, Sala>()
@@ -63,8 +66,13 @@ public class GerenciadorCenario : MonoBehaviour
         player.Madd.Cura(10000); //recupera vida ao trocar de sala
         if (destino.ehFimDeAndar)
         {
+            if (andar == 2)
+            {
+                YouWin();
+                return;
+            }
             // Tela de upgrade
-            player.gameObject.SetActive(false);
+                player.gameObject.SetActive(false);
             selecaoDeUpgrade.gameObject.SetActive(true);
             if (andar == 0)
                 background.sprite = bgCyber;
@@ -74,6 +82,7 @@ public class GerenciadorCenario : MonoBehaviour
                 background.sprite = bgLobby;
             selecaoDeUpgrade.TelaDeUpgrade();
             andar++;
+            if (andar == 2) salaIndex = 0;
         }
         else
         {
@@ -131,12 +140,22 @@ public class GerenciadorCenario : MonoBehaviour
             salaAtual.colisores.transform.parent.gameObject.SetActive(true);
     }
 
+    void YouWin()
+    {
+        
+    }
+
+    public void OnRestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void AbrirSala()
     {
         spriteRenderer.sprite = salaAtual.portaAberta[andar];
     }
 
-    void FecharSala()
+    public void FecharSala()
     {
         spriteRenderer.sprite = salaAtual.portaFechada[andar];
     }

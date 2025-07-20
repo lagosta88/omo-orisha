@@ -42,4 +42,18 @@ public class Gerador : MonoBehaviour
       else
          yield return null;
    }
+
+   void Update()
+   {
+      if (Input.GetKeyDown(KeyCode.RightControl))
+      {
+         StopAllCoroutines();
+         foreach (var x in inimigosSpawnados)
+         {
+            if (x != null)
+               Destroy(x.gameObject);
+         }
+         inimigosSpawnados.Clear();
+      }
+    }
 }

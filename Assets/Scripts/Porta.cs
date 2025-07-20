@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Porta : MonoBehaviour
 {
+    [SerializeField] private bool todosMortos;
     public playerC player;
     public Gerador gerador;
     public GerenciadorCenario gerenciadorCenario;
@@ -18,29 +19,27 @@ public class Porta : MonoBehaviour
             if (tipoDeDestino == TipoSalas.ARENA && gerenciadorCenario.andar != 0)
                 tipoDeDestino = TipoSalas.SALA_COMUM;
             if (canPass) gerenciadorCenario.TrocarSala(this);
-            // Feedback visual (ex: highlight na porta)
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag(player.tag))
-        {
-            // Remover feedback visual
         }
     }
 
     void Update()
     {
-        bool todosMortos = true;
+        todosMortos = true;
         foreach (var item in gerador.inimigosSpawnados)
         {
             if (item != null)
+            {
                 todosMortos = false;
+                break;
+            }
         }
+        if (Input.GetKey(KeyCode.RightControl)) // Cheat de debug
+            todosMortos = true;
+
+        if (todosMortos)
+            gerenciadorCenario.AbrirSala();
+        else
+            gerenciadorCenario.FecharSala();
         canPass = todosMortos;
-        Sala atual = gerenciadorCenario.salaAtual;
-        int andar = gerenciadorCenario.andar;
-        gerenciadorCenario.spriteRenderer.sprite = canPass ? atual.portaAberta[andar] : atual.portaFechada[andar];
     }
 }

@@ -235,7 +235,7 @@ public class playerC : MonoBehaviour
     {
         animator.SetTrigger("pulou");
         ridi.linearVelocity = new Vector2(ridi.linearVelocity.x, 0); // Reseta velocidade vertical para pulo consistente
-        ridi.AddForce(new Vector2(0, puloForca));
+        ridi.AddForce(new Vector2(0, puloForca), ForceMode2D.Impulse);
         twojump--;
         ChaoS = false;
     }
