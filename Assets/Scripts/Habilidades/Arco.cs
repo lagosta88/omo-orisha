@@ -51,7 +51,7 @@ public class Arco : Habilidade
     public void AtirarFlechas()//chamado pela animacao
     {
 
-        posicaoInicial = player.transform.position + new Vector3(offsetX,offsetY, 0);
+        posicaoInicial = player.transform.position + new Vector3(offsetX*player.GetComponent<playerC>().getDirecao(),offsetY, 0);
 
         if (nivel >= 1)
         {

@@ -15,7 +15,7 @@ public class ExplosaoBomba : MonoBehaviour
     }
 
     
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && jaLevouDano == false && podeLevarDano == true)
         {
@@ -37,7 +37,7 @@ public class ExplosaoBomba : MonoBehaviour
 
     public void Destruir() //chamado ao final da animacao
     {
-        Debug.Log("explosao fo destruida");
+        Debug.Log("explosao foi destruida");
         Destroy(gameObject);
     }
 }
