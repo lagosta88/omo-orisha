@@ -23,12 +23,12 @@ public class Investida : Habilidade
 
         animator.SetTrigger("Investida");
 
-        if(nivel >= 3)
+        if (nivel >= 3)
         {
             //causar dano ao inimigo ao passar por ele
         }
 
-        if(nivel >= 2)
+        if (nivel >= 2)
         {
             invulnerabilidade = true;
             atravessarInimigos = true;
@@ -39,8 +39,10 @@ public class Investida : Habilidade
         direcao = playerC.getDirecao();
 
         StartCoroutine(CourotinaInvestida());
-        
+
         atk.VerificarAtk(dano);
+        AudioManager.instance.TocarSom(AudioManager.instance.somInvestida);
+
     }
     
     //Coroutina da investida (faz ela durar varios frames)

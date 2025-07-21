@@ -29,6 +29,7 @@ public class Tridente : Habilidade
 
         StartCoroutine(CourotinaDash());
 
+        AudioManager.instance.TocarSom(AudioManager.instance.somTridente);
         
         
     }

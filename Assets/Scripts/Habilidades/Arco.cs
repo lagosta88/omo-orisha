@@ -51,7 +51,7 @@ public class Arco : Habilidade
     public void AtirarFlechas()//chamado pela animacao
     {
 
-        posicaoInicial = player.transform.position + new Vector3(offsetX,offsetY, 0);
+        posicaoInicial = player.transform.position + new Vector3(offsetX, offsetY, 0);
 
         if (nivel >= 1)
         {
@@ -93,6 +93,8 @@ public class Arco : Habilidade
 
 
         }
+        AudioManager.instance.TocarSom(AudioManager.instance.somArco);
+
     }
 
     public void FinalizarArco() //chamado pela animacao

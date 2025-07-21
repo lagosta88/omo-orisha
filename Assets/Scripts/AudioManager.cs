@@ -12,6 +12,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip somEsforco;
     public AudioClip somPulo;
      public AudioClip somPosPulo;
+     public AudioClip somArco;
+     public AudioClip somInvestida;
+     public AudioClip somTerremoto;
+     public AudioClip somTridente;
     private AudioSource audioSource;
 
     void Awake()

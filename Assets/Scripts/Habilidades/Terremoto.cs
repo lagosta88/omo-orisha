@@ -16,6 +16,8 @@ public class Terremoto : Habilidade
 
         animator.SetTrigger(atk.nomesTrigger[nivel - 1]);
 
+        AudioManager.instance.TocarSom(AudioManager.instance.somTerremoto);
+
         
     }
 
