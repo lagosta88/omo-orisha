@@ -23,6 +23,8 @@ public class VidaInimigo : MonoBehaviour
 
     public void Dano(int qnt)
     {
+        //GetComponentInParent<Animator>.SetTrigger("Danificado");
+
         Debug.Log("inimigo atingido");
         vidaatual -= qnt;
         if (vidaatual < 0)
