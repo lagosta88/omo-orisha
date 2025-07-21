@@ -644,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4176522428675646339, guid: 52cf6ab019190a44abb1051ff9465976, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.0413
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8357643528115144757, guid: 52cf6ab019190a44abb1051ff9465976, type: 3}
       propertyPath: m_Name
@@ -1452,6 +1452,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   fill: {fileID: 313304148}
+  vidamaxima: 50
 --- !u!114 &382709597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3171,6 +3172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9a8348b5cd25941b2f78175405ddc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modoImortal: 0
   atk:
     centrosDeAtaque:
     - {fileID: 393186861}
@@ -5761,7 +5763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3974322953641422574, guid: 860e092a572da7246a0fc195a4a64028, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.0413
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7737696565618851620, guid: 860e092a572da7246a0fc195a4a64028, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5980,7 +5982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5998795370860315726, guid: c29b14447945b7d4a9466b65470a86ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.0413
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8020473322419394697, guid: c29b14447945b7d4a9466b65470a86ec, type: 3}
       propertyPath: m_LocalPosition.x
