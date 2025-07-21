@@ -54,6 +54,8 @@ public class ProjetilBomba : ProjetilEnemy
         if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Chao") || collision.collider.CompareTag("parede"))
         {
             GameObject explosaoCriada = Instantiate(explosao, rigidBody.transform.position + deslocamentoExplosao, Quaternion.identity);
+            AudioManager.instance.TocarSom(AudioManager.instance.somBombaAtk2);
+
             Destroy(gameObject);
         }
     }

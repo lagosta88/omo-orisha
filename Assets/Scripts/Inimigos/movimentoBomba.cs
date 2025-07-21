@@ -41,6 +41,7 @@ public class movimentoBomba : InimigoGeral
     {
         GameObject projetil = Instantiate(BombaPrefab, transform.position + deslocamentoSpawnBomba, Quaternion.identity);
         projetil.GetComponent<ProjetilBomba>().alvo = target.gameObject;
+        AudioManager.instance.TocarSom(AudioManager.instance.somBombaAtk1);
     }
     void FixedUpdate()
     {
