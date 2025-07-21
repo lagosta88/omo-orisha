@@ -111,7 +111,7 @@ public class playerC : MonoBehaviour
         }
         atk.comboDisponivel = false;
         print("Executou o ataque " + etapa);
-        atk.VerificarAtk(0); //O parâmetro é o dano do ataque. Está em 0 pq não há inimigos com vida ainda
+        atk.VerificarAtk(10); //O parâmetro é o dano do ataque. Está em 0 pq não há inimigos com vida ainda
 
 
         //A LINHA DE CÓDIGO ABAIXO DEVE SER REMOVIDA QUANDO AS ANIMAÇÕES DO PLAYER FOREM IMPLEMENTADAS!!!!
@@ -160,8 +160,8 @@ public class playerC : MonoBehaviour
 
 
 
-        if (collision.collider.CompareTag("Inimigo")) // Quando colidir com inimigo perde 10 de vida
-            Madd.Dano(10);
+        //if (collision.collider.CompareTag("Inimigo")) // Quando colidir com inimigo perde 10 de vida
+        //    Madd.Dano(10);
 
 
 
