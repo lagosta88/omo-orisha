@@ -31,8 +31,9 @@ public class VidaInimigo : MonoBehaviour
         
         if (vidaatual < 0)
         {
-            vidaatual = 0;
             AudioManager.instance.TocarSom(AudioManager.instance.somBombaDano);
+            vidaatual = 0;
+            
 
             Debug.Log("inimigo morto");
         } // reduz a variavel vidaatual e se for menor que zero volta para zero
