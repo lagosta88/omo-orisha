@@ -37,7 +37,7 @@ public class ExplosaoBomba : MonoBehaviour
 
     public void Destruir() //chamado ao final da animacao
     {
-        Debug.Log("explosao fo destruida");
+        Debug.Log("explosao foi destruida");
         Destroy(gameObject);
     }
 }

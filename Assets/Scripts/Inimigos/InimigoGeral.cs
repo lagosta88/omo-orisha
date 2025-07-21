@@ -34,6 +34,7 @@ public class InimigoGeral : MonoBehaviour
         if (Slider.vidaatual != vidaFrameAnterior)
         {
             spriteRenderer.color = Color.red;
+
             //animator.SetTrigger("Danificado");
         }
         else

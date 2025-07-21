@@ -52,6 +52,8 @@ public class movimentoBomba : InimigoGeral
 
     }
 
+    
+
     /*
     void OnDrawGizmos()
     {
