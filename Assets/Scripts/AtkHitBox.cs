@@ -69,4 +69,6 @@ public class AtkHitBox //Não pode derivar do MonoBehaviour
         Debug.DrawLine(dirBaixo, esqBaixo, Color.red); // Base
         Debug.DrawLine(esqBaixo, esqCima, Color.red);   // Esquerda
     }
+
+ 
 }

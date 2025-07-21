@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alvo: {fileID: 0}
-  velocidade: 5
+  velocidade: 8
   danoCausado: 10
 --- !u!50 &8135432445689846176
 Rigidbody2D:

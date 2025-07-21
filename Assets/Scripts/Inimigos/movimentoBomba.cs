@@ -11,16 +11,13 @@ public class movimentoBomba : InimigoGeral
     public AtkHitBox hitbox;
 
     public Animator animator;
-    public Vector3 deslocamentoExplosao;
-    private SpriteRenderer spriteRenderer;
-    public GameObject ExplosaoMorte;
     public GameObject BombaPrefab;
     public Vector3 deslocamentoSpawnBomba;
     public float tempoEntreAtaques;
-    private int vidaFrameAnterior;
-    void Start()
+   
+    new void Start()
     {
-
+        base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -47,33 +44,12 @@ public class movimentoBomba : InimigoGeral
     }
     void FixedUpdate()
     {
+        ExplodirSeMorrer();
+        IndicadorDeDano();
+        OlharParaAlvo(target, -1);
 
-        
-        //checar se recebeu dano
-        if (Slider.vidaatual != vidaFrameAnterior)
-        {
-            spriteRenderer.color = Color.red;
-            //animator.SetTrigger("Danificado");
-        }
-        else
-        {
-            spriteRenderer.color = Color.white;
-        }
-        vidaFrameAnterior = Slider.vidaatual;
 
-        if (Slider.vidaatual <= 0)
-        {
-            Instantiate(ExplosaoMorte, transform.position + deslocamentoExplosao, Quaternion.identity);
-            Destroy(gameObject);
 
-        }
-        
-        //olhar para o jogador
-        Vector3 vetorParaOInimigo = target.position - transform.position;
-        float direcao = Mathf.Sign(vetorParaOInimigo.x);
-        transform.right = new Vector3(-direcao, 0f, 0f);
-
-        
     }
 
     /*

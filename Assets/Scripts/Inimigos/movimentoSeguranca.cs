@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movimento_inimigo : InimigoGeral
+public class movimentoSeguranca : InimigoGeral
 {
     public float speed = 2f;
     public float jumpForce = 5f;
     public float jumpThreshold = 1.5f; // altura mínima para considerar pulo
+    public float attackThreshold; //distancia minima para atacar
     private bool ChaoS;
     private Transform target;
     private Rigidbody2D rb;
     public AtkHitBox hitbox;
-    void Start()
+    public Animator animator;
+    public float tempoEntreAtaques;
+    public float danoCausado;
+    new void Start()
     {
+        base.Start(); 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         StartCoroutine("AtkLoop");
     }
 
@@ -22,25 +28,38 @@ public class movimento_inimigo : InimigoGeral
     {
         while (Slider.vidaatual > 0)
         {
-
-            //hitbox.VerificarAtk(10);
-            yield return new WaitForSeconds(1f);
+            Debug.Log("Loop seguranca! ");
+            float distancia = Mathf.Abs(target.position.x - transform.position.x);
+            if (distancia <= attackThreshold)
+            {
+                Atacar();
+            }
+            
+            yield return new WaitForSeconds(tempoEntreAtaques);
 
         }
     }
+
+    void Atacar()
+    {
+        animator.SetTrigger("Atacando");
+    }
+
+
+    void AtivarHitboxAtaque()
+    {
+        hitbox.VerificarAtk(danoCausado);
+    }
+
+
     void FixedUpdate()
     {
-
-        if (Slider.vidaatual <= 0)
-        {
-
-            Destroy(gameObject);
-
-        }
-
+        ExplodirSeMorrer();
+        IndicadorDeDano();
 
 
         if (target == null) return;
+
 
         // Move apenas no eixo X
         float direction = Mathf.Sign(target.position.x - transform.position.x);
@@ -51,9 +70,13 @@ public class movimento_inimigo : InimigoGeral
 
         if (verticalDistance > jumpThreshold && ChaoS)
         {
+            animator.SetTrigger("Pulando");
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // zera o Y antes de aplicar pulo
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+
+        OlharParaAlvo(target, 1);
+
     }
 
     // Verifica se está no chão
@@ -74,10 +97,10 @@ public class movimento_inimigo : InimigoGeral
         }
     }
 
-    /*
+    
     void OnDrawGizmos()
     {
         if (hitbox.visualizar) hitbox.MostrarCaixa(hitbox.qualDebug);
     }
-    */
+    
 }

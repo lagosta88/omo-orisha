@@ -29,7 +29,7 @@ public class Terremoto : Habilidade
     {
         base.FimDaHabilidade();
     }
-
+    
     void OnDrawGizmos()
     {
         if (atk.visualizar) atk.MostrarCaixa(atk.qualDebug);

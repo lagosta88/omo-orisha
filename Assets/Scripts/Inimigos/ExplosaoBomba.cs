@@ -4,14 +4,14 @@ using static UnityEditor.Progress;
 public class ExplosaoBomba : MonoBehaviour
 {
 
-    public float tempoParaSumir;
+    //public float tempoParaSumir; //destruicao agora eh baseada na animacao
     public int danoCausado;
     private bool jaLevouDano = false;
     private bool podeLevarDano = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Destroy(gameObject, tempoParaSumir);
+        //Destroy(gameObject, tempoParaSumir);
     }
 
     
@@ -33,5 +33,11 @@ public class ExplosaoBomba : MonoBehaviour
     public void DesativarDano() //chamado pela animacao
     {
         podeLevarDano = false;
+    }
+
+    public void Destruir() //chamado ao final da animacao
+    {
+        Debug.Log("explosao fo destruida");
+        Destroy(gameObject);
     }
 }

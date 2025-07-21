@@ -15,14 +15,11 @@ public class movimentopistola : InimigoGeral
     public GameObject projetilPrefab;
     public Vector3 deslocamentoSpawnProjetil;
     public Animator animator;
-    public GameObject ExplosaoMorte;
-    public Vector3 deslocamentoExplosao;
-    private int vidaFrameAnterior;
-    private SpriteRenderer spriteRenderer;
     public float minDistancia;
-    void Start()
+    private float direcao = 1;
+    new void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        base.Start();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -43,44 +40,26 @@ public class movimentopistola : InimigoGeral
     }
 
 
-    void DispararPistola() //chamado pela animacao de atacar
+    public void DispararPistola() //chamado pela animacao de atacar
     {
-        GameObject projetil = Instantiate(projetilPrefab, transform.position + deslocamentoSpawnProjetil, Quaternion.identity);
+        Vector3 vetorDeslocamento = new Vector3(deslocamentoSpawnProjetil.x * direcao, deslocamentoSpawnProjetil.y, deslocamentoSpawnProjetil.z);
+        GameObject projetil = Instantiate(projetilPrefab, transform.position + vetorDeslocamento, Quaternion.identity);
         projetil.GetComponent<ProjetilPistola>().alvo = target.gameObject;
 
         //hitbox.VerificarAtk(10);
     }
     void FixedUpdate()
     {
-        
 
-
-
-        if (Slider.vidaatual <= 0)
-        {
-            Instantiate(ExplosaoMorte, transform.position + deslocamentoExplosao, Quaternion.identity);
-            Destroy(gameObject);
-
-        }
-       
-        
-        //checar se recebeu dano
-        if(Slider.vidaatual != vidaFrameAnterior)
-        {
-            spriteRenderer.color = Color.red;
-            //animator.SetTrigger("Danificado");
-        }else
-        {
-            spriteRenderer.color = Color.white;
-        }
-        vidaFrameAnterior = Slider.vidaatual;
+        ExplodirSeMorrer();
+        IndicadorDeDano();
         
         if (target == null) return;
 
         // Move apenas no eixo X
         float distanciaX = target.position.x - transform.position.x;
         float distanciaAbsoluta = Mathf.Abs(distanciaX);
-        float direcao = Mathf.Sign(distanciaX);
+        direcao = Mathf.Sign(distanciaX);
         
 
 
