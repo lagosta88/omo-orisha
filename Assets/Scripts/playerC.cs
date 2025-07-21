@@ -120,6 +120,7 @@ public class playerC : MonoBehaviour
             if ((ChaoS || twojump > 0) && !EstaUsandoHabilidade())
             {
                 pulou();
+                AudioManager.instance.TocarSom(AudioManager.instance.somPulo);
             }
         }
 
