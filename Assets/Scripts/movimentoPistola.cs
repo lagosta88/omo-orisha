@@ -14,7 +14,7 @@ public class movimentopistola : InimigoGeral
     public float tempoEntreAtaques;
     public GameObject projetilPrefab;
     public Vector3 deslocamentoSpawnProjetil;
-    void Start()
+    void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();

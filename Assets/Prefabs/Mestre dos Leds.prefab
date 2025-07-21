@@ -186,7 +186,7 @@ MonoBehaviour:
     tamanhoDoAtaque: []
     layerDoAlvo:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
     comboAtual: 0
     nomesTrigger: []
     player: 0

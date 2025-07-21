@@ -9,7 +9,7 @@ public class movimentoBomba : MonoBehaviour
     private Rigidbody2D rb;
     public VidaInimigo Slider;
     public AtkHitBox hitbox;
-    void Start()
+    void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();

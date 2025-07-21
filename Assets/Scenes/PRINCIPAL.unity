@@ -2657,6 +2657,8 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   fill: {fileID: 313304148}
+  vidamaxima: 100
+  vidaatual: 0
 --- !u!114 &382709597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5107,8 +5109,8 @@ MonoBehaviour:
   - {fileID: 4286928084692215670, guid: c29b14447945b7d4a9466b65470a86ec, type: 3}
   inimigosSpawnados: []
   minimoDeInimigos: 1
-  maximoDeInimigos: 10
-  coolDownEntreSpawn: 1
+  maximoDeInimigos: 7
+  coolDownEntreSpawn: 1.5
 --- !u!4 &850914767
 Transform:
   m_ObjectHideFlags: 0
@@ -9772,7 +9774,7 @@ MonoBehaviour:
   Madd: {fileID: 382709596}
   alvoobjeto: {fileID: 0}
   ridi: {fileID: 1535205768}
-  puloForca: 20
+  puloForca: 18
   velon: 0
   ChaoS: 0
   wallJumpForcaX: 150
@@ -9921,9 +9923,9 @@ MonoBehaviour:
   velocidade: 15
   tempoTotal: 0.2
   danoGolpes:
-  - 0
-  - 0
-  - 0
+  - 30
+  - 50
+  - 70
 --- !u!114 &1535205772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9965,9 +9967,9 @@ MonoBehaviour:
     visualizar: 0
     qualDebug: 0
   danoCausado:
-  - 0
-  - 0
-  - 0
+  - 20
+  - 40
+  - 60
 --- !u!114 &1535205773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10003,7 +10005,7 @@ MonoBehaviour:
     ataqueHabilitado: 1
     visualizar: 0
     qualDebug: 0
-  dano: 0
+  dano: 30
   velocidade: 30
   tempoTotal: 0.2
 --- !u!70 &1535205774

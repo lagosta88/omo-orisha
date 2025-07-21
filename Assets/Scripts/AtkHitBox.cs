@@ -41,7 +41,7 @@ public class AtkHitBox //Não pode derivar do MonoBehaviour
 
             if (player)
             {
-                if (item.gameObject.TryGetComponent<InimigoGeral>( out InimigoGeral componente)){
+                if (item.gameObject.TryGetComponent( out InimigoGeral componente)){
                     componente.Slider.Dano((int)danoCausado);
                 }
             }

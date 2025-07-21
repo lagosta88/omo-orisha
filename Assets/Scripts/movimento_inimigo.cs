@@ -11,11 +11,15 @@ public class movimento_inimigo : InimigoGeral
     private Transform target;
     private Rigidbody2D rb;
     public AtkHitBox hitbox;
-    void Start()
+    void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine("AtkLoop");
+    }
+
+    void Start()
+    {
+        StartCoroutine(nameof(AtkLoop));
     }
 
     IEnumerator AtkLoop()

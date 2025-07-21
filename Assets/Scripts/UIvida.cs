@@ -7,8 +7,8 @@ public class UIvida : MonoBehaviour
     public Gradient gradiente;
     public Image fill;
 
-    private int vidamaxima = 100;
-    private int vidaatual;
+    [SerializeField] private int vidamaxima = 100;
+    [SerializeField] private int vidaatual;
 
     public delegate void Morreu();
     public static event Morreu OnMorte;
@@ -16,7 +16,7 @@ public class UIvida : MonoBehaviour
     public delegate void ReceberDano();
     public static event ReceberDano OnReceberDano;
 
-    void Start()
+    void Awake()
     {
         vidaatual = vidamaxima;
         Slidervida.maxValue = vidamaxima;

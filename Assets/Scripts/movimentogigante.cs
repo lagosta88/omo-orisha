@@ -28,7 +28,7 @@ public class movimentogigante : MonoBehaviour
         Parado
     }
 
-    void Start()
+    void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();

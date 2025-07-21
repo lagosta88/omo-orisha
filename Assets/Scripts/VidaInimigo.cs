@@ -10,7 +10,7 @@ public class VidaInimigo : MonoBehaviour
     public int vidamaxima = 20;
     public int vidaatual;
 
-    void Start()
+    void Awake()
     {
         vidaatual = vidamaxima;
         Slidervida.maxValue = vidamaxima;
