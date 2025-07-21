@@ -31,7 +31,7 @@ public class VidaInimigo : MonoBehaviour
         
         if (vidaatual < 0)
         {
-            AudioManager.instance.TocarSom(AudioManager.instance.somBombaDano);
+            
             vidaatual = 0;
             
 
