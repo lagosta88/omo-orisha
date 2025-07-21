@@ -55,7 +55,7 @@ public class movimentoSerra : InimigoGeral
 
     void Atacar()
     {
-        AudioManager.instance.TocarSom(AudioManager.instance.somSerraAtk);
+        
         Debug.Log("ataque do serra chamado!");
         animator.SetTrigger("PrepararAtaque");
         podeMover = false;
@@ -65,6 +65,7 @@ public class movimentoSerra : InimigoGeral
     public void DashSerra() //chamado pela animacao
     {
         StartCoroutine(CourotinaDashSerra());
+        AudioManager.instance.TocarSom(AudioManager.instance.somSerraAtk);
         //invulnerabilidade = true;
     }
 
