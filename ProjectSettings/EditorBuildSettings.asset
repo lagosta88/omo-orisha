@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Teste_inimigo.unity
     guid: 790cc1bc8c031054aa63ed55e079f690
   - enabled: 1
-    path: Assets/GameOver.unity
+    path: Assets/Scenes/GameOver.unity
     guid: eef1441af02d2554e8423de7b66ffea2
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

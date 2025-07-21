@@ -1990,7 +1990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7808ea51e3cf884682af6dc9068ff47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeDaCena: Cena1
+  nomeDaCena: lore
   mainMenuPanel: {fileID: 1553809377}
   optionsPanel: {fileID: 1453243777}
   creditsPanel: {fileID: 1293315782}
