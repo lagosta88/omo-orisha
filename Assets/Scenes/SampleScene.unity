@@ -1113,7 +1113,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ed9d97f845a102c4898d5cc02b5b24b5, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
