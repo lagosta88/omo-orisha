@@ -478,6 +478,7 @@ public class playerC : MonoBehaviour
     public void Morreu() //chamado pelo evento UIvida.OnMorte()
     {
         animator.SetTrigger("Morreu");
+        AudioManager.instance.TocarSom(AudioManager.instance.somFalha);
         AudioManager.instance.TocarSom(AudioManager.instance.somChoro);
 
     }
