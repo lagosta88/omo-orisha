@@ -25,7 +25,7 @@ public class movimentopistola : InimigoGeral
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine("AtkLoop");
-        
+
     }
 
     IEnumerator AtkLoop()
@@ -33,7 +33,7 @@ public class movimentopistola : InimigoGeral
         while (Slider.vidaatual > 0)
         {
             animator.SetTrigger("Atacando");
-            
+
             yield return new WaitForSeconds(tempoEntreAtaques);
 
         }
@@ -53,32 +53,32 @@ public class movimentopistola : InimigoGeral
 
         ExplodirSeMorrer();
         IndicadorDeDano();
-        
+
         if (target == null) return;
 
         // Move apenas no eixo X
         float distanciaX = target.position.x - transform.position.x;
         float distanciaAbsoluta = Mathf.Abs(distanciaX);
         direcao = Mathf.Sign(distanciaX);
-        
+
 
 
         //diz para onde o inimigo esta apontando
         transform.right = new Vector3(-direcao, 0, 0);
 
-    if (distanciaAbsoluta > minDistancia + 0.5f)
+        if (distanciaAbsoluta > minDistancia + 0.5f)
         {
-        // Muito longe, aproxima
-        rb.linearVelocity = new Vector2(direcao * speed, rb.linearVelocity.y);
+            // Muito longe, aproxima
+            rb.linearVelocity = new Vector2(direcao * speed, rb.linearVelocity.y);
         }
-    else if (distanciaAbsoluta < minDistancia - 0.5f)
+        else if (distanciaAbsoluta < minDistancia - 0.5f)
         {
-        // Muito perto, afasta
-        rb.linearVelocity = new Vector2(-direcao * speed, rb.linearVelocity.y);
+            // Muito perto, afasta
+            rb.linearVelocity = new Vector2(-direcao * speed, rb.linearVelocity.y);
         }
-    else
+        else
         {
-        // Na faixa ideal, para
+            // Na faixa ideal, para
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
 
@@ -113,6 +113,13 @@ public class movimentopistola : InimigoGeral
             animator.SetTrigger("Pulou");
         }
     }
+    
+       new public void IndicadorDeDano()
+{
+    base.IndicadorDeDano();
+
+    AudioManager.instance.TocarSom(AudioManager.instance.somPistolaDano);
+}
 
     /*
     void OnDrawGizmos()

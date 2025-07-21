@@ -14,7 +14,7 @@ public class movimentoBomba : InimigoGeral
     public GameObject BombaPrefab;
     public Vector3 deslocamentoSpawnBomba;
     public float tempoEntreAtaques;
-   
+
     new void Start()
     {
         base.Start();
@@ -52,6 +52,13 @@ public class movimentoBomba : InimigoGeral
 
 
     }
+    
+       new public void IndicadorDeDano()
+{
+    base.IndicadorDeDano();
+
+    AudioManager.instance.TocarSom(AudioManager.instance.somBombaDano);
+}
 
     /*
     void OnDrawGizmos()
