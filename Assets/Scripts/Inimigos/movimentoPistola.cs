@@ -42,6 +42,7 @@ public class movimentopistola : InimigoGeral
 
     public void DispararPistola() //chamado pela animacao de atacar
     {
+        AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAtk);
         Vector3 vetorDeslocamento = new Vector3(deslocamentoSpawnProjetil.x * direcao, deslocamentoSpawnProjetil.y, deslocamentoSpawnProjetil.z);
         GameObject projetil = Instantiate(projetilPrefab, transform.position + vetorDeslocamento, Quaternion.identity);
         projetil.GetComponent<ProjetilPistola>().alvo = target.gameObject;
@@ -70,11 +71,13 @@ public class movimentopistola : InimigoGeral
         {
             // Muito longe, aproxima
             rb.linearVelocity = new Vector2(direcao * speed, rb.linearVelocity.y);
+            AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAnda);
         }
         else if (distanciaAbsoluta < minDistancia - 0.5f)
         {
             // Muito perto, afasta
             rb.linearVelocity = new Vector2(-direcao * speed, rb.linearVelocity.y);
+            AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAnda);
         }
         else
         {

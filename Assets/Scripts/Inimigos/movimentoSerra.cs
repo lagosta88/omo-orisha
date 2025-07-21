@@ -55,6 +55,7 @@ public class movimentoSerra : InimigoGeral
 
     void Atacar()
     {
+        AudioManager.instance.TocarSom(AudioManager.instance.somSerraAtk);
         Debug.Log("ataque do serra chamado!");
         animator.SetTrigger("PrepararAtaque");
         podeMover = false;
@@ -120,6 +121,7 @@ public class movimentoSerra : InimigoGeral
             // Move apenas no eixo X
             direction = Mathf.Sign(target.position.x - transform.position.x);
             rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
+            AudioManager.instance.TocarSom(AudioManager.instance.somSerraAnda);
 
             // Verifica se deve pular
             float verticalDistance = target.position.y - transform.position.y;
