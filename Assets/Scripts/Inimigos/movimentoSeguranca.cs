@@ -65,7 +65,7 @@ public class movimentoSeguranca : InimigoGeral
         // Move apenas no eixo X
         float direction = Mathf.Sign(target.position.x - transform.position.x);
         rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
-        AudioManager.instance.TocarSom(AudioManager.instance.somSegurançaAnda);
+        //AudioManager.instance.TocarSom(AudioManager.instance.somSegurançaAnda);
 
         // Verifica se deve pular
         float verticalDistance = target.position.y - transform.position.y;

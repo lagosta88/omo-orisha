@@ -71,13 +71,13 @@ public class movimentopistola : InimigoGeral
         {
             // Muito longe, aproxima
             rb.linearVelocity = new Vector2(direcao * speed, rb.linearVelocity.y);
-            AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAnda);
+            //AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAnda);
         }
         else if (distanciaAbsoluta < minDistancia - 0.5f)
         {
             // Muito perto, afasta
             rb.linearVelocity = new Vector2(-direcao * speed, rb.linearVelocity.y);
-            AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAnda);
+            //AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAnda);
         }
         else
         {
