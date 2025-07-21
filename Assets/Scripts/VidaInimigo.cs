@@ -27,6 +27,7 @@ public class VidaInimigo : MonoBehaviour
 
         Debug.Log("inimigo atingido");
         vidaatual -= qnt;
+        AudioManager.instance.TocarSom(AudioManager.instance.somBombaDano);
         if (vidaatual < 0)
         {
             vidaatual = 0;
