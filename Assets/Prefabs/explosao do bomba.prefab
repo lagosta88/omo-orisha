@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7306221221711553430}
   - component: {fileID: 4487358345828934093}
   - component: {fileID: 3884795933926035817}
-  - component: {fileID: 5630764864277099535}
+  - component: {fileID: 5049514185037444350}
   m_Layer: 0
   m_Name: explosao do bomba
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6248695, y: 1.6248695, z: 1.6248695}
+  m_LocalScale: {x: 3.5857182, y: 3.5857182, z: 3.5857182}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402e2b1e669d2f044a23d95d58552272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempoParaSumir: 0.6
+  tempoParaSumir: 0.4
   danoCausado: 10
 --- !u!212 &3884795933926035817
 SpriteRenderer:
@@ -115,19 +115,19 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1514712697778168248, guid: 7fb31f2ce33dc134d903cbe99e46e02e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f8d5fa65f9c9e7f4fa5dba329d4cb803, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.54, y: 0.45}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5630764864277099535
-BoxCollider2D:
+--- !u!58 &5049514185037444350
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,14 +161,4 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.89, y: 0.7}
-    newSize: {x: 0.54, y: 0.45}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.89, y: 0.7}
-  m_EdgeRadius: 0
+  m_Radius: 0.55

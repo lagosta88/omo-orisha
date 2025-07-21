@@ -12,6 +12,14 @@ public class Arco : Habilidade
 
     public float offsetX;
     public float offsetY;
+
+    new void Start()
+    {
+        base.Start();
+
+        flecha.GetComponent<flechaDeOxossi>().player = player.GetComponent<playerC>();
+        flecha.GetComponent<flechaDeOxossi>().area = player.GetComponentInChildren<AreaDetectora>();
+    }
     public override void Ativar()
     {
         base.Ativar();

@@ -28,8 +28,7 @@ public class flechaDeOxossi : MonoBehaviour
 
         
     }
-    //
-    //x
+   
 
     // Update is called once per frame
     void Update()
