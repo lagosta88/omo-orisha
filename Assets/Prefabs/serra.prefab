@@ -141,13 +141,8 @@ Transform:
   m_GameObject: {fileID: 2739786486316551669}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-=======
-  m_LocalPosition: {x: -5.01, y: -5.6, z: 0}
   m_LocalScale: {x: 3.65001, y: 3.65001, z: 3.65001}
->>>>>>> origin/merge-lucca-cezi
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1351452196329541698}
@@ -224,6 +219,7 @@ MonoBehaviour:
   Slider: {fileID: 143362551340606918}
   ExplosaoMorte: {fileID: 7464327016721273746, guid: a4dd3636ee6063d4b89d09bd0d18ac41, type: 3}
   deslocamentoExplosao: {x: 0, y: 0, z: 0}
+  gerador: {fileID: 0}
   speed: 2
   jumpForce: 10
   jumpThreshold: 1.5
@@ -235,18 +231,20 @@ MonoBehaviour:
     - {x: 4.5, y: 2.5}
     layerDoAlvo:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
     comboAtual: 0
     nomesTrigger: []
     player: 0
+    atacando: 0
+    ataqueHabilitado: 1
     visualizar: 1
     qualDebug: 0
   animator: {fileID: 0}
   tempoEntreAtaques: 0.5
   danoCausado: 10
   colisor: {fileID: 0}
-  velocidade: 30
-  tempoTotal: 0.2
+  velocidade: 15
+  tempoTotal: 0.4
 --- !u!95 &3602575439205321461
 Animator:
   serializedVersion: 7
@@ -339,34 +337,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2739786486316551669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d31207681731274aa02a1be212931eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Slider: {fileID: 143362551340606918}
-  gerador: {fileID: 0}
-  speed: 2
-  jumpForce: 10
-  jumpThreshold: 1.5
-  hitbox:
-    centrosDeAtaque:
-    - {fileID: 8461896522183621909}
-    tamanhoDoAtaque:
-    - {x: 1.5, y: 1.5}
-    layerDoAlvo:
-      serializedVersion: 2
-      m_Bits: 64
-    comboAtual: 0
-    nomesTrigger: []
-    player: 0
-    atacando: 0
-    ataqueHabilitado: 1
-    visualizar: 1
-    qualDebug: 0
-=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8221524719793294649}
@@ -392,7 +362,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8461896522183621909}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> origin/merge-lucca-cezi
 --- !u!1 &6032252359879196354
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,13 +496,8 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   fill: {fileID: 964188302382772372}
-<<<<<<< HEAD
-  vidamaxima: 20
-  vidaatual: 0
-=======
   vidamaxima: 50
   vidaatual: 50
->>>>>>> origin/merge-lucca-cezi
 --- !u!1 &9197469708794773443
 GameObject:
   m_ObjectHideFlags: 0

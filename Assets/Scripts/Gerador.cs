@@ -11,7 +11,7 @@ public class Gerador : MonoBehaviour
    public float coolDownEntreSpawn;
    private int quantidade;
 
-   public void IniciarSpawn(bool ehBoss = false)
+    public void IniciarSpawn(bool ehBoss = false)
    {
       quantidade = Random.Range(
          minimoDeInimigos + 3 * gerenciadorCenario.andar,

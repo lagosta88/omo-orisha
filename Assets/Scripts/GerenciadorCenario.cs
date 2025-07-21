@@ -31,7 +31,7 @@ public class GerenciadorCenario : MonoBehaviour
     public int salaIndex = 0;
     void Start()
     {
-        uiFimDeJogo.SetActive(false);
+        //uiFimDeJogo.SetActive(false);
         andar = 0;
         spriteRenderer.sprite = inicioAndFim.portaAberta[0];
         outrasSalas = new Dictionary<TipoSalas, Sala>()
@@ -53,11 +53,6 @@ public class GerenciadorCenario : MonoBehaviour
         salaAtual.colisores.SetActive(true);
         background.sprite = bgLobby;
         background.transform.position = offset[0];
-
-        foreach (Sala sala in salasPrincipais)
-        {
-            (sala.portaFechada[2], sala.portaAberta[2]) = (sala.portaAberta[2], sala.portaFechada[2]);
-        }
     }
 
     public void TrocarSala(Porta destino)

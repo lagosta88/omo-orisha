@@ -383,7 +383,7 @@ Transform:
   m_GameObject: {fileID: 8715086561213135767}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.65, y: -1.94, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.71716, y: 3.71716, z: 0.92929}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -556,6 +556,7 @@ MonoBehaviour:
   Slider: {fileID: 2393451162945556683}
   ExplosaoMorte: {fileID: 7464327016721273746, guid: a4dd3636ee6063d4b89d09bd0d18ac41, type: 3}
   deslocamentoExplosao: {x: 0, y: 0, z: 0}
+  gerador: {fileID: 0}
   speed: 2
   jumpForce: 10
   jumpThreshold: 1.5
@@ -571,6 +572,8 @@ MonoBehaviour:
     comboAtual: 0
     nomesTrigger: []
     player: 0
+    atacando: 0
+    ataqueHabilitado: 1
     visualizar: 1
     qualDebug: 0
   animator: {fileID: 0}

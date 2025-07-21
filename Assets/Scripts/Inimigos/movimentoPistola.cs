@@ -14,30 +14,26 @@ public class movimentopistola : InimigoGeral
     public float tempoEntreAtaques;
     public GameObject projetilPrefab;
     public Vector3 deslocamentoSpawnProjetil;
-<<<<<<< HEAD:Assets/Scripts/movimentoPistola.cs
-    void Awake()
-=======
     public Animator animator;
     public float minDistancia;
     private float direcao = 1;
-    new void Start()
->>>>>>> origin/merge-lucca-cezi:Assets/Scripts/Inimigos/movimentoPistola.cs
+    void Awake()
     {
-        base.Start();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine("AtkLoop");
-        
     }
 
     IEnumerator AtkLoop()
     {
+        yield return new WaitForSeconds(2f);
         while (Slider.vidaatual > 0)
         {
+            Debug.Log("Loop pistola");
             animator.SetTrigger("Atacando");
-            
+
             yield return new WaitForSeconds(tempoEntreAtaques);
 
         }
@@ -46,6 +42,7 @@ public class movimentopistola : InimigoGeral
 
     public void DispararPistola() //chamado pela animacao de atacar
     {
+        Debug.Log("Pistola disparou!");
         Vector3 vetorDeslocamento = new Vector3(deslocamentoSpawnProjetil.x * direcao, deslocamentoSpawnProjetil.y, deslocamentoSpawnProjetil.z);
         GameObject projetil = Instantiate(projetilPrefab, transform.position + vetorDeslocamento, Quaternion.identity);
         projetil.GetComponent<ProjetilPistola>().alvo = target.gameObject;
@@ -104,7 +101,7 @@ public class movimentopistola : InimigoGeral
         {
             ChaoS = true;
             animator.SetTrigger("NoChao");
-            Debug.Log("no chao!");
+            //Debug.Log("no chao!");
         }
     }
 

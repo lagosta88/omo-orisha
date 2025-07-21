@@ -2,6 +2,8 @@ using UnityEngine;
 
 public abstract class Habilidade : MonoBehaviour //essa classe servira de base para todas as outras habilidades
 {
+    [TextArea]
+    public string descricaoHabilidade;
 
     [Range(0, 3)] public int nivel = 0;
    

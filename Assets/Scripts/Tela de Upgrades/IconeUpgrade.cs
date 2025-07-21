@@ -1,14 +1,18 @@
 using NUnit.Framework;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class IconeUpgrade : MonoBehaviour
 {
-
+    public TextMeshProUGUI descricaoHab;
     public SelecaoDeUpgrade selecaoDeUpgrade;
     public int numIcone;
     public Sprite iconeVazio;
     public GerenciadorCenario gerenciadorCenario;
+    public Habilidade habilidadeUpgrade;
+    public bool seted = false;
 
     void OnEnable()
     {
@@ -18,13 +22,15 @@ public class IconeUpgrade : MonoBehaviour
     void OnDisable()
     {
         SelecaoDeUpgrade.OnInicioTelaDeUpgrade -= AtualizarIcone;
+        descricaoHab.text = string.Empty;
+        seted = false;
     }
 
     public void UpgradeBotao()
     {
         Debug.Log("botao apertado!");
 
-        Habilidade habilidadeUpgrade = selecaoDeUpgrade.ListaHab[numIcone];
+        habilidadeUpgrade = selecaoDeUpgrade.ListaHab[numIcone];
         if (habilidadeUpgrade != null)
         {
             selecaoDeUpgrade.UpgradeHabilidade(habilidadeUpgrade);
@@ -36,6 +42,8 @@ public class IconeUpgrade : MonoBehaviour
     void AtualizarIcone()
     {
         Image icone = GetComponent<Image>();
+        habilidadeUpgrade = selecaoDeUpgrade.ListaHab[numIcone];
+        seted = true;
 
         if (selecaoDeUpgrade.ListaHab.Count > numIcone)
         {

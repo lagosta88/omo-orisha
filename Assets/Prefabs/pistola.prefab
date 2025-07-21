@@ -245,11 +245,7 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   fill: {fileID: 7071130888513293674}
-<<<<<<< HEAD
-  vidamaxima: 20
-=======
   vidamaxima: 50
->>>>>>> origin/merge-lucca-cezi
   vidaatual: 0
 --- !u!1 &9145017147125498719
 GameObject:
@@ -280,15 +276,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9145017147125498719}
   serializedVersion: 2
-<<<<<<< HEAD
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-=======
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.199337, y: -2.81, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.1028743, y: 3.1028743, z: 3.1028743}
->>>>>>> origin/merge-lucca-cezi
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3492780660114217711}
@@ -389,16 +379,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slider: {fileID: 2927782567418401890}
-<<<<<<< HEAD
-  gerador: {fileID: 0}
-  speed: 2
-  jumpForce: 5
-=======
   ExplosaoMorte: {fileID: 7464327016721273746, guid: a4dd3636ee6063d4b89d09bd0d18ac41, type: 3}
   deslocamentoExplosao: {x: 0, y: 0, z: 0}
+  gerador: {fileID: 0}
   speed: 2.5
   jumpForce: 15
->>>>>>> origin/merge-lucca-cezi
   jumpThreshold: 1.5
   hitbox:
     centrosDeAtaque:
@@ -411,15 +396,8 @@ MonoBehaviour:
     comboAtual: 0
     nomesTrigger: []
     player: 0
-<<<<<<< HEAD
     atacando: 0
     ataqueHabilitado: 1
-    visualizar: 1
-    qualDebug: 0
-  tempoEntreAtaques: 0
-  projetilPrefab: {fileID: 0}
-  deslocamentoSpawnProjetil: {x: 0, y: 0, z: 0}
-=======
     visualizar: 0
     qualDebug: 0
   tempoEntreAtaques: 5
@@ -486,7 +464,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.026840685, y: 0.031680122}
   m_Size: {x: 0.98368514, y: 0.87192166}
   m_Direction: 1
->>>>>>> origin/merge-lucca-cezi
 --- !u!1 &9209550072928120293
 GameObject:
   m_ObjectHideFlags: 0

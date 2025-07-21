@@ -14,7 +14,7 @@ public class InimigoGeral : MonoBehaviour
     public void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        Slider.vidaatual = Slider.vidamaxima;
         vidaFrameAnterior = Slider.vidaatual;
     }
     public void ExplodirSeMorrer()
@@ -49,6 +49,12 @@ public class InimigoGeral : MonoBehaviour
         Vector3 vetorParaOInimigo = target.position - transform.position;
         float direcao = Mathf.Sign(vetorParaOInimigo.x);
         transform.right = new Vector3(direcao * direcaoPadrao, 0f, 0f);
+    }
+    public Gerador gerador;
+
+    public void SetupGerador(Gerador gerador)
+    {
+        this.gerador = gerador;
     }
 
 }

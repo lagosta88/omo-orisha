@@ -7,13 +7,8 @@ public class UIvida : MonoBehaviour
     public Gradient gradiente;
     public Image fill;
 
-<<<<<<< HEAD
-    [SerializeField] private int vidamaxima = 100;
-    [SerializeField] private int vidaatual;
-=======
     public int vidamaxima = 100;
     public int vidaatual;
->>>>>>> origin/merge-lucca-cezi
 
     public delegate void Morreu();
     public static event Morreu OnMorte;

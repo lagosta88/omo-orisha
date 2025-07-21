@@ -12,35 +12,22 @@ public class movimentoSeguranca : InimigoGeral
     private Transform target;
     private Rigidbody2D rb;
     public AtkHitBox hitbox;
-<<<<<<< HEAD:Assets/Scripts/movimento_inimigo.cs
-    void Awake()
-=======
+
     public Animator animator;
     public float tempoEntreAtaques;
     public float danoCausado;
-    new void Start()
->>>>>>> origin/merge-lucca-cezi:Assets/Scripts/Inimigos/movimentoSeguranca.cs
+    void Awake()
     {
-        base.Start(); 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
-<<<<<<< HEAD:Assets/Scripts/movimento_inimigo.cs
-    }
-
-    void Start()
-    {
         StartCoroutine(nameof(AtkLoop));
-=======
         animator = GetComponent<Animator>();
-        StartCoroutine("AtkLoop");
->>>>>>> origin/merge-lucca-cezi:Assets/Scripts/Inimigos/movimentoSeguranca.cs
     }
 
     IEnumerator AtkLoop()
     {
         while (Slider.vidaatual > 0)
         {
-            Debug.Log("Loop seguranca! ");
             float distancia = Mathf.Abs(target.position.x - transform.position.x);
             if (distancia <= attackThreshold)
             {

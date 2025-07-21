@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class ExplosaoBomba : MonoBehaviour
 {
@@ -15,10 +14,11 @@ public class ExplosaoBomba : MonoBehaviour
     }
 
     
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && jaLevouDano == false && podeLevarDano == true)
         {
+            Debug.Log("Acertou a bomba no player");
             collision.gameObject.GetComponent<playerC>().Madd.Dano(danoCausado);
             jaLevouDano = true;
         }

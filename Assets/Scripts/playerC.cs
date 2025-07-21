@@ -52,9 +52,6 @@ public class playerC : MonoBehaviour
       
 
     }
-<<<<<<< HEAD
-    
-=======
 
     private void OnEnable()
     {
@@ -68,7 +65,6 @@ public class playerC : MonoBehaviour
         UIvida.OnReceberDano -= LevouDano;
     }
 
->>>>>>> origin/merge-lucca-cezi
     // Update is called once per frame
     void Update()
     {
