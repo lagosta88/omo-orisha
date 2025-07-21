@@ -299,8 +299,7 @@ public class playerC : MonoBehaviour
          if (collision.collider.CompareTag("Chao")) // Quando colidir com chao a variavel fica true
               
             tocouOChao = true;
-            AudioManager.instance.TocarSom(AudioManager.instance.somPosPulo);
-
+            
         if (collision.collider.CompareTag("parede"))
         {// Quando colidir com parede a variavel fica true
             Wall = true;
@@ -477,11 +476,15 @@ public class playerC : MonoBehaviour
     public void Morreu() //chamado pelo evento UIvida.OnMorte()
     {
         animator.SetTrigger("Morreu");
+        AudioManager.instance.TocarSom(AudioManager.instance.somChoro);
+
     }
 
     public void LevouDano() //chamado pelo evento UIvida.ReceberDano()
     {
         animator.SetTrigger("RecebeuDano");
+        AudioManager.instance.TocarSom(AudioManager.instance.somDor);
+
     }
 }
 
