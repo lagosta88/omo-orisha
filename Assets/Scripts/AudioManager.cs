@@ -8,7 +8,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip somFalha;
     public AudioClip somChoro;
     public AudioClip somErro;
+    public AudioClip somEsforcoSoco;
+
     public AudioClip somEsforco;
+
     public AudioClip somPulo;
 
     private AudioSource audioSource;
