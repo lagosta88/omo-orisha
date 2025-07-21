@@ -53,12 +53,7 @@ public class movimentoBomba : InimigoGeral
 
     }
     
-       new public void IndicadorDeDano()
-{
-    base.IndicadorDeDano();
-
-    AudioManager.instance.TocarSom(AudioManager.instance.somBombaDano);
-}
+  
 
     /*
     void OnDrawGizmos()

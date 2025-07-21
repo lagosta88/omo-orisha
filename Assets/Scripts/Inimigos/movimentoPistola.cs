@@ -114,12 +114,7 @@ public class movimentopistola : InimigoGeral
         }
     }
     
-       new public void IndicadorDeDano()
-{
-    base.IndicadorDeDano();
-
-    AudioManager.instance.TocarSom(AudioManager.instance.somPistolaDano);
-}
+   
 
     /*
     void OnDrawGizmos()

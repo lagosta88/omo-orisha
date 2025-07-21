@@ -192,11 +192,5 @@ public class movimentoSerra : InimigoGeral
         if (hitbox.visualizar) hitbox.MostrarCaixa(hitbox.qualDebug);
     }
     
-           new public void IndicadorDeDano()
-{
-    base.IndicadorDeDano();
-
-    AudioManager.instance.TocarSom(AudioManager.instance.somPistolaDano);
-}
 
 }
