@@ -299,6 +299,7 @@ public class playerC : MonoBehaviour
          if (collision.collider.CompareTag("Chao")) // Quando colidir com chao a variavel fica true
               
             tocouOChao = true;
+            AudioManager.instance.TocarSom(AudioManager.instance.somPosPulo);
 
         if (collision.collider.CompareTag("parede"))
         {// Quando colidir com parede a variavel fica true

@@ -9,11 +9,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip somChoro;
     public AudioClip somErro;
     public AudioClip somEsforcoSoco;
-
     public AudioClip somEsforco;
-
     public AudioClip somPulo;
-
+     public AudioClip somPosPulo;
     private AudioSource audioSource;
 
     void Awake()
