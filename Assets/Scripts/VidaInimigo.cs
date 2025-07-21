@@ -7,17 +7,10 @@ public class VidaInimigo : MonoBehaviour
     public Gradient gradiente;
     public Image fill;
 
-<<<<<<< HEAD
     public int vidamaxima = 20;
     public int vidaatual;
 
     void Awake()
-=======
-    private int vidamaxima = 20;
-    public int vidaatual;
-
-    void Start()
->>>>>>> origin/menuUpdate
     {
         vidaatual = vidamaxima;
         Slidervida.maxValue = vidamaxima;
@@ -30,11 +23,8 @@ public class VidaInimigo : MonoBehaviour
 
     public void Dano(int qnt)
     {
-<<<<<<< HEAD
         //GetComponentInParent<Animator>.SetTrigger("Danificado");
 
-=======
->>>>>>> origin/menuUpdate
         Debug.Log("inimigo atingido");
         vidaatual -= qnt;
         if (vidaatual < 0)

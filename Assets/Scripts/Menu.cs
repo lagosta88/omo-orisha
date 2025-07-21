@@ -1,17 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-<<<<<<< HEAD
 
-public class Menu : MonoBehaviour
-{
-    public GameObject optionsPanel;
-    public GameObject creditsPanel;
-
-    public void StartGame()
-    {
-        // Troca para a próxima cena (defina no Build Settings)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-=======
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -91,7 +80,6 @@ public class Menu : MonoBehaviour
     {
         Debug.Log("Iniciando o jogo...");
         SceneManager.LoadScene( nomeDaCena); // Substitua por sua cena real
->>>>>>> origin/menuUpdate
     }
 
     public void OpenOptions()
@@ -113,13 +101,6 @@ public class Menu : MonoBehaviour
     {
         creditsPanel.SetActive(false);
     }
-<<<<<<< HEAD
-
-    public void QuitGame()
-    {
-        Debug.Log("Sair do Jogo"); // Funciona no editor
-        Application.Quit();         // Funciona no build
-=======
     public void OpenControls()
     {
         controlesPanel.SetActive(true);
@@ -141,6 +122,5 @@ public class Menu : MonoBehaviour
     {
         if (audioSource != null && clickSound != null)
             audioSource.PlayOneShot(clickSound);
->>>>>>> origin/menuUpdate
     }
 }

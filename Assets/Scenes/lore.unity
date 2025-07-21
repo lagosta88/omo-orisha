@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b589ccdbef3645641a76b5e681af5ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeDaCena: Teste_inimigo
+  nomeDaCena: PRINCIPAL
 --- !u!4 &50796745
 Transform:
   m_ObjectHideFlags: 0
