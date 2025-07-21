@@ -8,7 +8,7 @@ public class UIvida : MonoBehaviour
     public Image fill;
 
     public int vidamaxima = 100;
-    private int vidaatual;
+    public int vidaatual;
 
     public delegate void Morreu();
     public static event Morreu OnMorte;

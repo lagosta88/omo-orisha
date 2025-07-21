@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: edbf7f327420100489c2eee6bd038a51
+guid: 5775d683d8a051e4c92ace3f0cb6c22a
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 6084418794191388232
-    second: "Marca - Terremoto de Xang\xF4 0000_0"
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
