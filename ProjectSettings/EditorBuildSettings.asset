@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/menu2.0.unity
     guid: 8c4f2b31e8df9f04daf08e0d0beff53f
   - enabled: 1
-    path: Assets/Scenes/lore.unity
+    path: Assets/Scenes/lores.unity
     guid: f300f1c96a89c0140abf03a011ec3c87
   - enabled: 1
     path: Assets/Scenes/Teste_inimigo.unity
