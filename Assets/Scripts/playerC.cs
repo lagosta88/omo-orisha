@@ -454,6 +454,8 @@ public class playerC : MonoBehaviour
 
     public void InicioAtaque() //chamada no comeco da animacao de ataque
     {
+        AudioManager.instance.TocarSom(AudioManager.instance.somEsforcoSoco);
+
         emAtaque = true;
     }
 
