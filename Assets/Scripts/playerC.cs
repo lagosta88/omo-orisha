@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class playerC : MonoBehaviour
 {
+    public bool modoImortal;
     public PlayerCombo atk;
     public UIvida Madd;
 
@@ -30,7 +31,7 @@ public class playerC : MonoBehaviour
     public Habilidade UltimaHabilidadeUtilizada = null;
     public float atritoHabilidade; //desaceleracao sofrida pelo player ao usar uma habilidades
     public bool emAtaque = false;
-
+    private bool derrotado = false;
 
 
     // Start is called before the first frame update
@@ -46,18 +47,29 @@ public class playerC : MonoBehaviour
         atk.player = true;
         //  posicao.localPosition = new Vector3(0,0,0);
 
-        UIvida.OnMorte += Morreu; //quando a vida do jogador chegar a zero (controlado por UIvida), chamar a funcao Morreu()
-        UIvida.OnReceberDano += LevouDano;
+        
 
       
 
+    }
+
+    private void OnEnable()
+    {
+        UIvida.OnMorte += Morreu; //quando a vida do jogador chegar a zero (controlado por UIvida), chamar a funcao Morreu()
+        UIvida.OnReceberDano += LevouDano;
+    }
+
+    private void OnDisable()
+    {
+        UIvida.OnMorte -= Morreu; //quando a vida do jogador chegar a zero (controlado por UIvida), chamar a funcao Morreu()
+        UIvida.OnReceberDano -= LevouDano;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
+        if (!derrotado) { }
 
         //teste para arrumar deteccao com o chao
         if (ridi.linearVelocityY < -1 && tocouOChao == false)
@@ -477,6 +489,29 @@ public class playerC : MonoBehaviour
 
     public void Morreu() //chamado pelo evento UIvida.OnMorte()
     {
+        if (!modoImortal)
+        {
+            derrotado = true;
+            Debug.Log("Voce morreu - playerC desativado");
+            Invoke("AnimacaoMorte", 0);
+            enabled = false;
+            
+        }
+        else
+        {
+            Debug.Log("Você iria morrer, mas está com o modo imortal ativado");
+        }
+       
+
+    }
+
+    private void DesativarScript()
+    {
+        enabled = false; //desativa esse script
+    }
+
+    private void AnimacaoMorte()
+    {
         animator.SetTrigger("Morreu");
         AudioManager.instance.TocarSom(AudioManager.instance.somFalha);
         AudioManager.instance.TocarSom(AudioManager.instance.somChoro);
@@ -485,8 +520,15 @@ public class playerC : MonoBehaviour
 
     public void LevouDano() //chamado pelo evento UIvida.ReceberDano()
     {
+
         animator.SetTrigger("RecebeuDano");
         AudioManager.instance.TocarSom(AudioManager.instance.somDor);
+
+        if (!derrotado)
+        {
+            animator.SetTrigger("RecebeuDano");
+        
+        }
 
     }
 }

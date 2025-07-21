@@ -7,8 +7,8 @@ public class UIvida : MonoBehaviour
     public Gradient gradiente;
     public Image fill;
 
-    private int vidamaxima = 100;
-    private int vidaatual;
+    public int vidamaxima = 100;
+    public int vidaatual;
 
     public delegate void Morreu();
     public static event Morreu OnMorte;
@@ -30,14 +30,16 @@ public class UIvida : MonoBehaviour
     public void Dano(int qnt)
     {
         vidaatual -= qnt;
-        if(OnReceberDano != null) OnReceberDano();
+        if(OnReceberDano != null && vidaatual > 0) OnReceberDano();
 
-        if (vidaatual < 0)
+        if (vidaatual <= 0)
         {
             vidaatual = 0;
-            Debug.Log("VOCE MORREU");
+            Debug.Log("VIDA CHEGOU A ZERO");
             if(OnMorte !=null) OnMorte();
+         
         } // reduz a variavel vidaatual e se for menor que zero volta para zero
+
 
         Slidervida.value = vidaatual;
         fill.color = gradiente.Evaluate(Slidervida.normalizedValue);

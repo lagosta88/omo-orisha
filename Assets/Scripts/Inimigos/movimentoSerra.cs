@@ -42,7 +42,7 @@ public class movimentoSerra : InimigoGeral
         {
             Debug.Log("Loop serra! ");
             float distancia = Mathf.Abs(target.position.x - transform.position.x);
-            Debug.Log("distancia = " + distancia);
+            //Debug.Log("distancia = " + distancia);
             if (distancia <= attackThreshold)
             {
                 Atacar();
