@@ -5145,6 +5145,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8354092779944369127, guid: 5e6ec9c70e0c1f44bbc4e92e50209f84, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354092779944369127, guid: 5e6ec9c70e0c1f44bbc4e92e50209f84, type: 3}
       propertyPath: tempoTotal
       value: 0.4
       objectReference: {fileID: 0}
@@ -5234,7 +5238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8651064454298325310, guid: 5e6ec9c70e0c1f44bbc4e92e50209f84, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8651064454298325310, guid: 5e6ec9c70e0c1f44bbc4e92e50209f84, type: 3}
       propertyPath: m_LocalPosition.x
