@@ -132,6 +132,7 @@ public class playerC : MonoBehaviour
             if ((ChaoS || twojump > 0) && !EstaUsandoHabilidade())
             {
                 pulou();
+                AudioManager.instance.TocarSom(AudioManager.instance.somPulo);
             }
         }
 
@@ -313,7 +314,7 @@ public class playerC : MonoBehaviour
          if (collision.collider.CompareTag("Chao")) // Quando colidir com chao a variavel fica true
               
             tocouOChao = true;
-
+            
         if (collision.collider.CompareTag("parede"))
         {// Quando colidir com parede a variavel fica true
             Wall = true;
@@ -468,6 +469,8 @@ public class playerC : MonoBehaviour
 
     public void InicioAtaque() //chamada no comeco da animacao de ataque
     {
+        AudioManager.instance.TocarSom(AudioManager.instance.somEsforcoSoco);
+
         emAtaque = true;
     }
 
@@ -513,16 +516,27 @@ public class playerC : MonoBehaviour
     private void AnimacaoMorte()
     {
         animator.SetTrigger("Morreu");
+<<<<<<< HEAD
         this.enabled = false;
+=======
+        AudioManager.instance.TocarSom(AudioManager.instance.somFalha);
+        AudioManager.instance.TocarSom(AudioManager.instance.somChoro);
+
+>>>>>>> origin/johnsson2
     }
 
     public void LevouDano() //chamado pelo evento UIvida.ReceberDano()
     {
+
+        animator.SetTrigger("RecebeuDano");
+        AudioManager.instance.TocarSom(AudioManager.instance.somDor);
+
         if (!derrotado)
         {
             animator.SetTrigger("RecebeuDano");
         
         }
+
     }
 }
 

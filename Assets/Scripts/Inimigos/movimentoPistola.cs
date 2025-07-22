@@ -24,6 +24,10 @@ public class movimentopistola : InimigoGeral
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine("AtkLoop");
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/johnsson2
     }
 
     IEnumerator AtkLoop()
@@ -42,7 +46,11 @@ public class movimentopistola : InimigoGeral
 
     public void DispararPistola() //chamado pela animacao de atacar
     {
+<<<<<<< HEAD
         Debug.Log("Pistola disparou!");
+=======
+        AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAtk);
+>>>>>>> origin/johnsson2
         Vector3 vetorDeslocamento = new Vector3(deslocamentoSpawnProjetil.x * direcao, deslocamentoSpawnProjetil.y, deslocamentoSpawnProjetil.z);
         GameObject projetil = Instantiate(projetilPrefab, transform.position + vetorDeslocamento, Quaternion.identity);
         projetil.GetComponent<ProjetilPistola>().alvo = target.gameObject;
@@ -54,32 +62,34 @@ public class movimentopistola : InimigoGeral
 
         ExplodirSeMorrer();
         IndicadorDeDano();
-        
+
         if (target == null) return;
 
         // Move apenas no eixo X
         float distanciaX = target.position.x - transform.position.x;
         float distanciaAbsoluta = Mathf.Abs(distanciaX);
         direcao = Mathf.Sign(distanciaX);
-        
+
 
 
         //diz para onde o inimigo esta apontando
         transform.right = new Vector3(-direcao, 0, 0);
 
-    if (distanciaAbsoluta > minDistancia + 0.5f)
+        if (distanciaAbsoluta > minDistancia + 0.5f)
         {
-        // Muito longe, aproxima
-        rb.linearVelocity = new Vector2(direcao * speed, rb.linearVelocity.y);
+            // Muito longe, aproxima
+            rb.linearVelocity = new Vector2(direcao * speed, rb.linearVelocity.y);
+            //AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAnda);
         }
-    else if (distanciaAbsoluta < minDistancia - 0.5f)
+        else if (distanciaAbsoluta < minDistancia - 0.5f)
         {
-        // Muito perto, afasta
-        rb.linearVelocity = new Vector2(-direcao * speed, rb.linearVelocity.y);
+            // Muito perto, afasta
+            rb.linearVelocity = new Vector2(-direcao * speed, rb.linearVelocity.y);
+            //AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAnda);
         }
-    else
+        else
         {
-        // Na faixa ideal, para
+            // Na faixa ideal, para
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
 
@@ -114,6 +124,8 @@ public class movimentopistola : InimigoGeral
             animator.SetTrigger("Pulou");
         }
     }
+    
+   
 
     /*
     void OnDrawGizmos()

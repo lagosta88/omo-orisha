@@ -21,6 +21,7 @@ public class InimigoGeral : MonoBehaviour
     {
         if (Slider.vidaatual <= 0)
         {
+            AudioManager.instance.TocarSom(AudioManager.instance.somBombaDano);
             Instantiate(ExplosaoMorte, transform.position + deslocamentoExplosao, Quaternion.identity);
             Destroy(gameObject);
 

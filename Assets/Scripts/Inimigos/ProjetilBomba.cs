@@ -4,7 +4,7 @@ public class ProjetilBomba : ProjetilEnemy
 {
 
     Rigidbody2D rigidBody;
- 
+
     public GameObject alvo; //player
     public float velocidadeY;
     private float velocidadeX;
@@ -33,13 +33,13 @@ public class ProjetilBomba : ProjetilEnemy
 
         distancia = direcao.magnitude;
 
-        
+
 
         float tempoTotal = -2 * velocidadeY / gravidade;
-        float velocidadeX = distancia/tempoTotal;
+        float velocidadeX = distancia / tempoTotal;
 
 
-        rigidBody.linearVelocity = new Vector2(velocidadeX*sentido, velocidadeY);
+        rigidBody.linearVelocity = new Vector2(velocidadeX * sentido, velocidadeY);
 
     }
 
@@ -54,7 +54,11 @@ public class ProjetilBomba : ProjetilEnemy
         if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Chao") || collision.collider.CompareTag("parede"))
         {
             GameObject explosaoCriada = Instantiate(explosao, rigidBody.transform.position + deslocamentoExplosao, Quaternion.identity);
+            AudioManager.instance.TocarSom(AudioManager.instance.somBombaAtk2);
+
             Destroy(gameObject);
         }
     }
+    
+    
 }

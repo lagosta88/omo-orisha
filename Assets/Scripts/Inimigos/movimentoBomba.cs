@@ -14,7 +14,7 @@ public class movimentoBomba : InimigoGeral
     public GameObject BombaPrefab;
     public Vector3 deslocamentoSpawnBomba;
     public float tempoEntreAtaques;
-   
+
     new void Start()
     {
         base.Start();
@@ -41,6 +41,7 @@ public class movimentoBomba : InimigoGeral
     {
         GameObject projetil = Instantiate(BombaPrefab, transform.position + deslocamentoSpawnBomba, Quaternion.identity);
         projetil.GetComponent<ProjetilBomba>().alvo = target.gameObject;
+        AudioManager.instance.TocarSom(AudioManager.instance.somBombaAtk1);
     }
     void FixedUpdate()
     {
@@ -51,6 +52,8 @@ public class movimentoBomba : InimigoGeral
 
 
     }
+    
+  
 
     
 

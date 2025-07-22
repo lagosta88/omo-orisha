@@ -27,9 +27,14 @@ public class VidaInimigo : MonoBehaviour
 
         Debug.Log("inimigo atingido");
         vidaatual -= qnt;
+
+        
         if (vidaatual < 0)
         {
+            
             vidaatual = 0;
+            
+
             Debug.Log("inimigo morto");
         } // reduz a variavel vidaatual e se for menor que zero volta para zero
 

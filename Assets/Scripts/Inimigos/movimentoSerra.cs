@@ -7,7 +7,7 @@ public class movimentoSerra : InimigoGeral
 {
     public float speed = 2f;
     public float jumpForce = 5f;
-    public float jumpThreshold = 1.5f; // altura mínima para considerar pulo
+    public float jumpThreshold = 1.5f; // altura mï¿½nima para considerar pulo
     public float attackThreshold; //distancia minima para atacar
     private bool ChaoS;
     private Transform target;
@@ -55,6 +55,7 @@ public class movimentoSerra : InimigoGeral
 
     void Atacar()
     {
+        
         Debug.Log("ataque do serra chamado!");
         animator.SetTrigger("PrepararAtaque");
         podeMover = false;
@@ -64,6 +65,7 @@ public class movimentoSerra : InimigoGeral
     public void DashSerra() //chamado pela animacao
     {
         StartCoroutine(CourotinaDashSerra());
+        AudioManager.instance.TocarSom(AudioManager.instance.somSerraAtk);
         //invulnerabilidade = true;
     }
 
@@ -103,13 +105,13 @@ public class movimentoSerra : InimigoGeral
         IndicadorDeDano();
 
 
-        if(invulnerabilidade)
+        if (invulnerabilidade)
         {
             colisor.isTrigger = true;
         }
-        else 
-        { 
-            colisor.isTrigger = false; 
+        else
+        {
+            colisor.isTrigger = false;
         }
 
 
@@ -120,6 +122,7 @@ public class movimentoSerra : InimigoGeral
             // Move apenas no eixo X
             direction = Mathf.Sign(target.position.x - transform.position.x);
             rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
+            //AudioManager.instance.TocarSom(AudioManager.instance.somSerraAnda);
 
             // Verifica se deve pular
             float verticalDistance = target.position.y - transform.position.y;
@@ -135,7 +138,7 @@ public class movimentoSerra : InimigoGeral
         }
     }
 
-    // Verifica se está no chão
+    // Verifica se estï¿½ no chï¿½o
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Chao"))
@@ -144,7 +147,7 @@ public class movimentoSerra : InimigoGeral
         }
     }
 
-    // Detecta quando sai do chão
+    // Detecta quando sai do chï¿½o
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Chao"))
@@ -191,5 +194,6 @@ public class movimentoSerra : InimigoGeral
     {
         if (hitbox.visualizar) hitbox.MostrarCaixa(hitbox.qualDebug);
     }
+    
 
 }
