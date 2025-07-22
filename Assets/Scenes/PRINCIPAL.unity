@@ -11652,11 +11652,11 @@ MonoBehaviour:
   habilidadeDisponivel: 1
   flecha: {fileID: 553589526167105127, guid: d628cfb610f822841b03f24b40c1d80d, type: 3}
   player: {fileID: 1671418840}
-  velocidadeYLvl2: 3
-  velocidadeYLvl3: 6
+  velocidadeYLvl2: 9
+  velocidadeYLvl3: 12
   tempoDeVida: 5
-  offsetX: 0.25
-  offsetY: 0.23
+  offsetX: 1.6
+  offsetY: 0.65
 --- !u!114 &1671418845
 MonoBehaviour:
   m_ObjectHideFlags: 0
