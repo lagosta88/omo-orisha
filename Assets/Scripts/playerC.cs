@@ -516,13 +516,10 @@ public class playerC : MonoBehaviour
     private void AnimacaoMorte()
     {
         animator.SetTrigger("Morreu");
-<<<<<<< HEAD
         this.enabled = false;
-=======
         AudioManager.instance.TocarSom(AudioManager.instance.somFalha);
         AudioManager.instance.TocarSom(AudioManager.instance.somChoro);
 
->>>>>>> origin/johnsson2
     }
 
     public void LevouDano() //chamado pelo evento UIvida.ReceberDano()

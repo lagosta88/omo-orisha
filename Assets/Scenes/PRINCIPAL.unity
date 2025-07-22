@@ -2582,6 +2582,173 @@ Transform:
   - {fileID: 1203520813}
   m_Father: {fileID: 1420436160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &380769245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 380769248}
+  - component: {fileID: 380769247}
+  - component: {fileID: 380769246}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &380769246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380769245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255f5e45644ca124692923fd363e6a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  somDor: {fileID: 8300000, guid: d643711206848364087c3452a19c9348, type: 3}
+  somFalha: {fileID: 8300000, guid: bb8e01a41e1dc214194381a124f8dd12, type: 3}
+  somChoro: {fileID: 8300000, guid: 1f4a2c6a00edbb649984aeb2672d4509, type: 3}
+  somErro: {fileID: 8300000, guid: 93cf4cd458d35f140a16e97c4857af58, type: 3}
+  somEsforcoSoco: {fileID: 8300000, guid: 93cf4cd458d35f140a16e97c4857af58, type: 3}
+  somEsforco: {fileID: 8300000, guid: ebb442e5ddda0b24ca7dbbf1e7afc33d, type: 3}
+  somPulo: {fileID: 8300000, guid: f44f6083cbe9e704f83de67c912beec9, type: 3}
+  somPosPulo: {fileID: 8300000, guid: 39ecfd21f90390f44a16ee9779bc74d7, type: 3}
+  somArco: {fileID: 8300000, guid: 66af0a9dc0ca40a458b750d22a017724, type: 3}
+  somInvestida: {fileID: 8300000, guid: 876da9d2af55d3147ab6efd29cee5901, type: 3}
+  somTerremoto: {fileID: 8300000, guid: 389974c72539b804bbe9b5f705207637, type: 3}
+  somTridente: {fileID: 8300000, guid: e67d4d468ad6d42479a07d71fd8a3431, type: 3}
+  somBombaAtk1: {fileID: 8300000, guid: daad1407fb684fc499d238c521c9703a, type: 3}
+  somBombaAtk2: {fileID: 8300000, guid: 2dc04d71fbb34214cb5bd4d909c56045, type: 3}
+  somBombaAtk3: {fileID: 8300000, guid: 78df88f716216844a9938323a34f864b, type: 3}
+  somBombaDano: {fileID: 8300000, guid: 7975a3969c4069743adb8c03db51a982, type: 3}
+  somPistolaAtk: {fileID: 8300000, guid: 78d1bfd0c8db498419e597492f1867a3, type: 3}
+  somPistolaDano: {fileID: 8300000, guid: 7975a3969c4069743adb8c03db51a982, type: 3}
+  somPistolaAnda: {fileID: 8300000, guid: 732bd42f1aa81634f819b7fc0d984b55, type: 3}
+  "somSeguran\xE7aAtk": {fileID: 8300000, guid: 530ee800ded54584b8a43f0d84af724e, type: 3}
+  "somSeguran\xE7aDano": {fileID: 0}
+  "somSeguran\xE7aAnda": {fileID: 8300000, guid: 9904cc88220455b41952a99e2de86b14, type: 3}
+  somSerraAtk: {fileID: 8300000, guid: 06773cbc13a91fc41bcf5bc623e34d74, type: 3}
+  somSerraDano: {fileID: 0}
+  somSerraAnda: {fileID: 8300000, guid: 3bfd0dcb90219ab4fbf2c5663a6b23ed, type: 3}
+--- !u!82 &380769247
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380769245}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &380769248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380769245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.30262414, y: 0.3847435, z: 0.04504037}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &382709594
 GameObject:
   m_ObjectHideFlags: 0
@@ -11642,7 +11809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78de3a74aa073ad46870a17054a3e792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  descricaoHabilidade: "Arco de Ox\xF3ssi\nN\xEDvel.1) Atira 1 flecha teleguiada;\nN\xEDvel.2)
+  descricaoHabilidade: "Arco de Oxossi\nN\xEDvel.1) Atira 1 flecha teleguiada;\nN\xEDvel.2)
     Atira 3 flechas teleguiadas;\nN\xEDvel.3) Atira 5 flechas\_teleguiadas;"
   nivel: 3
   animator: {fileID: 0}
@@ -14957,3 +15124,4 @@ SceneRoots:
   - {fileID: 850914767}
   - {fileID: 149208220}
   - {fileID: 1828438712}
+  - {fileID: 380769248}

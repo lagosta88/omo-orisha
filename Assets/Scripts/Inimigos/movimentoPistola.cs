@@ -24,10 +24,6 @@ public class movimentopistola : InimigoGeral
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine("AtkLoop");
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/johnsson2
     }
 
     IEnumerator AtkLoop()
@@ -46,11 +42,8 @@ public class movimentopistola : InimigoGeral
 
     public void DispararPistola() //chamado pela animacao de atacar
     {
-<<<<<<< HEAD
         Debug.Log("Pistola disparou!");
-=======
         AudioManager.instance.TocarSom(AudioManager.instance.somPistolaAtk);
->>>>>>> origin/johnsson2
         Vector3 vetorDeslocamento = new Vector3(deslocamentoSpawnProjetil.x * direcao, deslocamentoSpawnProjetil.y, deslocamentoSpawnProjetil.z);
         GameObject projetil = Instantiate(projetilPrefab, transform.position + vetorDeslocamento, Quaternion.identity);
         projetil.GetComponent<ProjetilPistola>().alvo = target.gameObject;
